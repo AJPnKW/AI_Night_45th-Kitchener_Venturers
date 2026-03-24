@@ -58,7 +58,9 @@ This base URL is inferred from the current repository owner and repository name,
 
 ## Manual GitHub-Side Setting
 
-- if GitHub Pages is not yet enabled for this repository, set **Settings > Pages > Source** to **GitHub Actions**
+- current blocker: GitHub API returned `422 Your current plan does not support GitHub Pages for this repository`
+- if the repository is kept private, GitHub Pages must first be supported by the account plan
+- if you switch the repository to public and GitHub Pages becomes available, set **Settings > Pages > Source** to **GitHub Actions** only if the automatic enablement step still has not completed it for you
 
 ## Readiness
 
@@ -66,3 +68,4 @@ This base URL is inferred from the current repository owner and repository name,
 - publish mirror structure is ready
 - README policy is preserved
 - 404 file remains in the publish mirror root
+- live activation is blocked by current GitHub Pages availability for this repository

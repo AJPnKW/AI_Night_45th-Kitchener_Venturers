@@ -11,6 +11,7 @@ Deployment notes:
 - workflow file: `.github/workflows/deploy-pages.yml`
 - expected deployment source: `main` branch via GitHub Actions, uploading the `github/` folder as the Pages artifact
 - public README links remain limited to participant, parent / guardian, consent, and privacy
+- current GitHub-side blocker: the repository returned `422 Your current plan does not support GitHub Pages for this repository` when Pages activation was attempted
 
 Expected default live base URL if Pages is enabled without a custom domain:
 
