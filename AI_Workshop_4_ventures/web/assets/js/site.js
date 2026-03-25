@@ -3,7 +3,10 @@ window.siteConfig = Object.assign(
     formEndpoint: "",
     formServiceName: "Formspree-compatible endpoint",
     volunteerContactLabel: "Volunteer organizer contact",
-    volunteerContactValue: "Configure in assets/js/site.js before publishing live approvals.",
+    volunteerContactValue: "Configure in assets/js/site-config.js before publishing live approvals.",
+    submissionInboxLabel: "Submission inbox",
+    submissionInboxValue: "No live submission inbox configured yet.",
+    submissionInboxUrl: "",
     eventDateLabel: "April 14, 2026",
     eventLocationLabel: "Hope Lutheran Pres Church, 30 Shaftsbury",
     accessPasswords: {
@@ -205,8 +208,13 @@ function initWorkflowForm(form) {
       saveDraft(form);
       updateSummary(form);
       if (status) {
-        status.textContent = "No live submission endpoint is configured yet. Your draft is saved on this device. Use Print / Save as PDF or Download entered details for handoff.";
+        status.textContent = "No live submission inbox is configured yet. Your draft is saved only on this device. Use Print / Save as PDF or Download entered details if the organizer still needs a copy.";
       }
+      return;
+    }
+
+    if (status) {
+      status.textContent = `Submitting now. Your answers will be sent to the organizer through ${window.siteConfig.formServiceName}.`;
     }
   });
 
@@ -332,8 +340,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("[data-form-status]").forEach((status) => {
     status.textContent = window.siteConfig.formEndpoint
-      ? `This form is configured to submit through ${window.siteConfig.formServiceName}.`
-      : "No external form endpoint is configured yet. Save a draft locally, print or save as PDF, or download the entered details for manual collection.";
+      ? `This form is configured to submit through ${window.siteConfig.formServiceName}, so the organizer receives a copy and can keep a response list.`
+      : "No live submission inbox is configured yet. Save a draft locally, print or save as PDF, or download the entered details for manual collection.";
   });
 
   document.querySelectorAll("[data-contact-label]").forEach((node) => {
@@ -342,6 +350,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("[data-contact-value]").forEach((node) => {
     node.textContent = window.siteConfig.volunteerContactValue;
+  });
+
+  document.querySelectorAll("[data-submission-inbox-label]").forEach((node) => {
+    node.textContent = window.siteConfig.submissionInboxLabel;
+  });
+
+  document.querySelectorAll("[data-submission-inbox-value]").forEach((node) => {
+    node.textContent = window.siteConfig.submissionInboxValue;
+  });
+
+  document.querySelectorAll("[data-submission-inbox-link]").forEach((node) => {
+    if (window.siteConfig.submissionInboxUrl) {
+      node.setAttribute("href", window.siteConfig.submissionInboxUrl);
+    } else {
+      node.removeAttribute("href");
+      node.setAttribute("aria-disabled", "true");
+      node.classList.add("disabled-link");
+    }
   });
 
   document.querySelectorAll("[data-workflow-form]").forEach((form) => {

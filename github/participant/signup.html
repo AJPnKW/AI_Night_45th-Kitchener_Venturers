@@ -8,6 +8,7 @@
   <link rel="icon" href="/AI_Night_45th-Kitchener_Venturers/assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/AI_Night_45th-Kitchener_Venturers/assets/css/site.css">
   <link rel="stylesheet" href="/AI_Night_45th-Kitchener_Venturers/assets/css/print.css">
+  <script src="/AI_Night_45th-Kitchener_Venturers/assets/js/site-config.js"></script>
   <script defer src="/AI_Night_45th-Kitchener_Venturers/assets/js/site.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
       <div class="hero-panel">
         <span class="eyebrow">Step 1 of 3</span>
         <h1>Venturer sign-up and readiness workflow.</h1>
-        <p class="lede">This page replaces the earlier simple form. It now covers the actual participant workflow: sign-up, age on the night of the event, safe-use agreement, readiness for devices and ChatGPT, and a printable summary for handoff.</p>
+        <p class="lede">This page covers the real participant workflow: sign-up, age on the night of the event, safe-use agreement, readiness for devices and ChatGPT, and a submission path the organizer can use to keep track of completed forms.</p>
         <div class="disclaimer-box"><strong>Event context:</strong> age is measured on <strong>April 14, 2026</strong>. This form does not ask for birthdate. It only asks for the participant's age on the event night.</div>
       </div>
       <div class="panel">
@@ -29,7 +30,8 @@
           <li>Checks device and ChatGPT readiness</li>
           <li>Confirms the participant understands the AI-use rules</li>
           <li>Shows whether parent approval is likely required</li>
-          <li>Lets the form be saved locally, downloaded, printed, or turned into a PDF</li>
+          <li>Lets the form be submitted to the organizer inbox when live collection is turned on</li>
+          <li>Still supports local save, download, print, or save-as-PDF as a fallback</li>
         </ul>
       </div>
     </section>
@@ -49,6 +51,9 @@
           <div class="form-status" data-form-status></div>
           <form id="participant-signup-form" data-form-endpoint data-workflow-form data-draft-key="participant_signup" data-summary-target="#participant-signup-summary" data-age-notice-target="#participant-age-note" data-save-button="#participant-save-draft" data-download-button="#participant-download" data-print-button="#participant-print" data-clear-button="#participant-clear" data-download-name="participant-signup">
             <input type="hidden" name="workflow_name" value="participant_signup">
+            <input type="hidden" name="event_name" value="AI Night - 45th Kitchener Group Venturer Scouts">
+            <input type="hidden" name="event_date" value="April 14, 2026">
+            <input type="hidden" name="event_location" value="Hope Lutheran Pres Church, 30 Shaftsbury">
             <div class="two-col">
               <div><label for="participant_name">Participant first name</label><input id="participant_name" name="participant_name" autocomplete="given-name" required></div>
               <div><label for="participant_age">Age on April 14, 2026</label><input id="participant_age" name="participant_age" inputmode="numeric" data-age-on-event required></div>
@@ -73,6 +78,7 @@
             </div>
           </form>
           <p class="field-note"><span data-contact-label></span>: <span data-contact-value></span></p>
+          <p class="field-note"><span data-submission-inbox-label></span>: <span data-submission-inbox-value></span></p>
         </div>
       </div>
 
@@ -85,6 +91,7 @@
       <div class="page-card">
         <h2>What happens next</h2>
         <ul class="list-clean">
+          <li>If live collection is turned on, the organizer receives a copy of this form and can track who has submitted it.</li>
           <li>If the participant is under 18 on April 14, 2026, the parent or guardian should complete the waiver.</li>
           <li>Use the pre-flight page to check devices, charger, ChatGPT access, and what to bring.</li>
           <li>Use print or save-as-PDF if a paper or PDF copy is needed.</li>

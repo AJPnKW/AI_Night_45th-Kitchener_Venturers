@@ -11,3 +11,8 @@ The privacy model is intentionally lightweight and volunteer-appropriate.
 
 The consent page supports a static-site-compatible third-party form endpoint. Until configured, the site presents a printable fallback process using the same minimum field set.
 
+Current collection model:
+
+- participant sign-up and parent waiver forms can submit into one organizer-controlled inbox/dashboard once `assets/js/site-config.js` is configured
+- until that happens, data is only kept locally in the browser unless the user downloads or prints it
+- the organizer should use a single controlled collection destination so they can see who has submitted and review the entered readiness or approval details

@@ -603,6 +603,11 @@ textarea {
   border: 1px solid rgba(224, 183, 41, 0.28);
 }
 
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .pill-row {
   display: flex;
   flex-wrap: wrap;
