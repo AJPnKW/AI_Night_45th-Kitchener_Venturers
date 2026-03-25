@@ -29,19 +29,23 @@ Relevant fields:
 - `submissionInboxValue`
 - `submissionInboxUrl`
 
-## What still must be supplied
+## Current configured destination
 
-One real form destination is still required. The simplest options are:
+The site is now configured to send form submissions to:
 
-1. a form endpoint URL from a service such as Formspree
-2. an email-based form receiver such as FormSubmit
-3. a Google Apps Script or similar endpoint that writes into a Google Sheet
+- `andrewjpearen@gmail.com`
 
-Until one of those exists, the forms can only:
+using:
 
-- save drafts on the current device
-- download the entered details
-- print or save as PDF
+- FormSubmit
+
+Configured file:
+
+- [site-config.js](/C:/Users/andrew/PROJECTS/Scouter_Jenn/AI_Workshop_4_ventures/web/assets/js/site-config.js)
+
+## One-time organizer action still required
+
+FormSubmit usually sends a first-use activation email to the target inbox. The organizer must open that email and confirm activation before normal form delivery starts.
 
 ## Recommended organizer outcome
 
@@ -53,4 +57,4 @@ For this project, the practical goal is:
 
 ## After endpoint setup
 
-Once the real endpoint is added to `site-config.js`, the public workflow pages will submit directly and the facilitator page will show the configured submission inbox label/value.
+The public workflow pages now submit directly to the configured FormSubmit destination, and the facilitator page shows the configured submission inbox label/value.

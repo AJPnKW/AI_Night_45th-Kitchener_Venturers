@@ -4,6 +4,12 @@ Decision: use a static-site-compatible third-party form handler pattern with a c
 
 Current refinement: the live collection configuration is now separated into `AI_Workshop_4_ventures/web/assets/js/site-config.js` so the collection destination can be updated without editing the core workflow logic.
 
+Current configured destination:
+
+- FormSubmit
+- organizer inbox: `andrewjpearen@gmail.com`
+- one-time inbox activation still required on first use
+
 Why:
 
 - works with GitHub Pages

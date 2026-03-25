@@ -1,12 +1,12 @@
 window.siteConfig = Object.assign(
   {
-    formEndpoint: "",
-    formServiceName: "Organizer submission inbox",
+    formEndpoint: "https://formsubmit.co/andrewjpearen@gmail.com",
+    formServiceName: "FormSubmit organizer inbox",
     volunteerContactLabel: "Organizer contact",
-    volunteerContactValue: "Set contact details in assets/js/site-config.js",
+    volunteerContactValue: "andrewjpearen@gmail.com",
     submissionInboxLabel: "Submission inbox",
-    submissionInboxValue: "Live collection is not configured yet.",
-    submissionInboxUrl: ""
+    submissionInboxValue: "Completed forms are configured to send to the organizer inbox at andrewjpearen@gmail.com through FormSubmit.",
+    submissionInboxUrl: "https://formsubmit.co/documentation"
   },
   window.siteConfig || {}
 );
