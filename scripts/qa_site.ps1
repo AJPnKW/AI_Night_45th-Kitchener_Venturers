@@ -18,6 +18,7 @@ $outDir = Join-Path $projectRoot "out\$timestamp"
 $zipPath = Join-Path $outDir "qa_bundle_$timestamp.zip"
 $logPath = Join-Path $logDir "qa_site.log.txt"
 $reportPath = Join-Path $reportDir "qa_results.md"
+$repoPagesPrefix = "AI_Night_45th-Kitchener_Venturers"
 
 New-Item -ItemType Directory -Force -Path $logDir, $reportDir, $outDir | Out-Null
 
@@ -40,7 +41,14 @@ function Resolve-SiteTarget {
   if ([string]::IsNullOrWhiteSpace($clean)) { return $null }
 
   if ($clean.StartsWith("/")) {
-    return Join-Path $siteRoot $clean.TrimStart("/").Replace("/", "\")
+    $trimmed = $clean.TrimStart("/")
+    if ($trimmed.StartsWith("$repoPagesPrefix/")) {
+      $trimmed = $trimmed.Substring($repoPagesPrefix.Length + 1)
+    }
+    elseif ($trimmed -eq $repoPagesPrefix) {
+      $trimmed = ""
+    }
+    return Join-Path $siteRoot $trimmed.Replace("/", "\")
   }
 
   $currentDir = Split-Path -Parent $CurrentFile
