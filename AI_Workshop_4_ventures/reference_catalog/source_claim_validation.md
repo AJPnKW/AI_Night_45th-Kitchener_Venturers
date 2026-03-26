@@ -16,9 +16,3 @@ This matrix tracks factual claims used in the expanded workshop learning system.
 | CLM-010 | AI outputs may include bias or incomplete perspectives, so learners should compare and question outputs. | Is ChatGPT biased? | downloaded_sources\OpenAI\Is ChatGPT biased_ _ OpenAI Help Center.pdf | Societal Impact of Generative AI | downloaded_sources\Code.org\Societal_Impact_of_Generative_AI.html | validated | Supports what beginners are not told segment. |
 | CLM-011 | A short one-hour variant should compress theory and keep the shared success task plus one short build block. | Learning Plan AI ChatGPT Session | workshop_pack\learning_plan_ai_chatgpt_session.html | Facilitator Slides | workshop_pack\facilitator_slides.html | validated | Derived from existing local plan structure. |
 | CLM-012 | Codex should be introduced to beginners as an AI coding helper that still needs human checking, not as magic autopilot. | ChatGPT agent | downloaded_sources\OpenAI\ChatGPT agent _ OpenAI Help Center.pdf | Using Codex with your ChatGPT plan | downloaded_sources\OpenAI\Using Codex with your ChatGPT plan _ OpenAI Help Center.pdf | validated | Supports safe beginner Codex awareness segment. |
-
-## Validation Notes
-
-- Primary references favor local OpenAI Help, OpenAI Academy, Code.org, ISTE/ASCD, and the locally saved workshop pack.
-- Claims used for youth safety, prompting, and session design were prioritized.
-- This file should be extended rather than replaced when future workshop content is added.

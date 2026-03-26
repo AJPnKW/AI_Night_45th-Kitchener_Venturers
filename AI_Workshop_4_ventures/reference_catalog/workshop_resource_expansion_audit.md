@@ -60,10 +60,6 @@ It also cross-checks the parent-level roll-up docs in `..\docs` for boundary ali
 - `reference_catalog\slide_candidate_matrix.csv`
 - `reference_catalog\slide_candidate_matrix.md`
 - `reference_catalog\learning_plan_expansion.md`
-- `reference_catalog\exercises_and_activity_bank.md`
-- `reference_catalog\codex_beginner_segment.md`
-- `reference_catalog\teen_safe_use_and_parent_controls.md`
-- `reference_catalog\what_beginners_are_not_told.md`
 - `reference_catalog\workshop_resource_expansion_audit.md`
 
 ## Boundary Drift Corrected
@@ -78,8 +74,14 @@ It also cross-checks the parent-level roll-up docs in `..\docs` for boundary ali
 - The local cache had useful references but no workshop-local claim-validation matrix.
 - The local cache had slides and plans but no reusable slide candidate matrix.
 - The local pack had session fragments but no expanded learning-plan crosswalk.
-- Safe-use, Codex framing, and “what beginners are not told” lacked workshop-local synthesis artifacts.
+- Safe-use, Codex framing, activity-bank guidance, and “what beginners are not told” lacked workshop-local synthesis artifacts.
 - The one-hour fallback model and hands-on-first rationale were implied but not documented directly.
+
+## Duplication Reduced
+
+- Repeated child-workstream content was consolidated into `reference_catalog\learning_plan_expansion.md`.
+- The separate child files for activity bank, teen-safe use, Codex beginner framing, and beginner limits were removed to reduce maintenance drift.
+- Parent docs remain as short roll-up summaries rather than duplicate workshop-local teaching content.
 
 ## Validation Summary
 

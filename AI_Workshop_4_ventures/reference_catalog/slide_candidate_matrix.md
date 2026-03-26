@@ -1,7 +1,5 @@
 # Slide Candidate Matrix
 
-This matrix identifies slide-ready source material already cached locally and shows how it should be reused for the workshop system.
-
 | Slide ID | Topic | Audience | Source Anchor | Reuse Type | Readiness | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | SLD-01 | Welcome and why this night exists | participants + parents | workshop_pack\learning_plan_ai_chatgpt_session.html | adapt | ready | Use event-specific opener and expectations. |
@@ -16,10 +14,3 @@ This matrix identifies slide-ready source material already cached locally and sh
 | SLD-10 | Codex and coding agents for beginners | participants | downloaded_sources\OpenAI\Using Codex with your ChatGPT plan _ OpenAI Help Center.pdf | compose | draft | Frame as helper, not replacement for thinking. |
 | SLD-11 | One-hour compressed version | facilitator | workshop_pack\learning_plan_ai_chatgpt_session.html | compose | draft | Internal facilitator-only timing slide. |
 | SLD-12 | Show-and-share close | participants | workshop_pack\learning_plan_ai_chatgpt_session.html | adapt | ready | Reflection and next-step prompts. |
-
-## Crosswalk Notes
-
-- workshop_pack\facilitator_slides.html remains the strongest local base for participant-facing live teaching slides.
-- workshop_pack\learning_plan_ai_chatgpt_session.html is the operational timing spine.
-- workshop_pack\parent_guardian_setup_flow.html is the base source for parent slide and handout content.
-- Local OpenAI references fill the gaps around ChatGPT settings, memory, projects, and Codex framing.

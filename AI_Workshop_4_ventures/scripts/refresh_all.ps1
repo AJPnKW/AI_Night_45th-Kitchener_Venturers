@@ -1,46 +1,20 @@
-﻿#requires -version 5.1
-
+#requires -version 5.1
+[CmdletBinding()]
+param([switch]$NoPause)
 $ErrorActionPreference = 'Stop'
-
-$target_root = 'C:\Users\andrew\PROJECTS\Scouter_Jenn\AI_Workshop_4_ventures'
-$script_dir = Join-Path $target_root 'scripts'
-$log_dir = Join-Path $target_root 'logs'
-New-Item -ItemType Directory -Force -Path $log_dir | Out-Null
-$timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-$log_path = Join-Path $log_dir "refresh_all_$timestamp.log.txt"
-
-function Write-Log {
-    param([string]$message)
-    $line = "[{0}] {1}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $message
-    $line | Tee-Object -FilePath $log_path -Append
+$scriptRoot = $PSScriptRoot
+$steps = @(
+    (Join-Path $scriptRoot 'download_missing_public_references.ps1'),
+    (Join-Path $scriptRoot 'inventory_local_sources.ps1'),
+    (Join-Path $scriptRoot 'expand_reference_catalog.ps1'),
+    (Join-Path $scriptRoot 'build_workshop_resource_bundle.ps1')
+)
+foreach ($step in $steps) {
+    if (-not (Test-Path -LiteralPath $step)) { throw "Missing canonical step: $step" }
 }
-
-Write-Log "START"
-
-$download_script = Join-Path $script_dir 'download_public_references.ps1'
-$manifest_script = Join-Path $script_dir 'generate_folder_manifest.ps1'
-
-if (-not (Test-Path -LiteralPath $download_script)) {
-    throw "Missing script: $download_script"
+Write-Host "Deprecated wrapper: refresh_all.ps1 now runs the canonical workshop resource pipeline." -ForegroundColor Yellow
+foreach ($step in $steps) { & $step -NoPause }
+if (-not $NoPause) {
+    Write-Host "`nPress ENTER to exit..." -ForegroundColor Yellow
+    [void][System.Console]::ReadLine()
 }
-
-if (-not (Test-Path -LiteralPath $manifest_script)) {
-    throw "Missing script: $manifest_script"
-}
-
-Write-Log "running=$download_script"
-& powershell -ExecutionPolicy Bypass -File $download_script
-
-Write-Log "running=$manifest_script"
-& powershell -ExecutionPolicy Bypass -File $manifest_script
-
-$start_page = Join-Path $target_root 'start_here.html'
-if (Test-Path -LiteralPath $start_page) {
-    Start-Process $start_page
-    Write-Log "opened=$start_page"
-}
-
-Write-Log "COMPLETE"
-Write-Host ""
-Write-Host "Press ENTER to exit..." -ForegroundColor Yellow
-[void][System.Console]::ReadLine()
