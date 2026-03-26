@@ -1,7 +1,7 @@
 """
 serve_github_mirror_preview.py
 Version: 1.0.0
-Purpose: Serve the github/ mirror locally under a /AI_Night_45th-Kitchener_Venturers/ URL prefix so preview URLs match GitHub Pages path structure.
+Purpose: Serve the github/ mirror locally under a /AI_Night_1st-Stanley-Park_Venture-Company/ URL prefix so preview URLs match GitHub Pages path structure.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from urllib.parse import urlsplit
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SITE_ROOT = REPO_ROOT / "github"
-PREFIX = "/AI_Night_45th-Kitchener_Venturers"
+PREFIX = "/AI_Night_1st-Stanley-Park_Venture-Company"
 
 
 class PrefixedHandler(http.server.SimpleHTTPRequestHandler):
@@ -49,4 +49,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 

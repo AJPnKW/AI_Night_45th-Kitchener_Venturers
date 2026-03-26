@@ -36,7 +36,7 @@ Date: 2026-03-24
 ## Assumptions Made
 
 - no newer explicit date, time, or location values were found in the tracked site files
-- the final reminder from Scouter Jenn is therefore the consistent source for date, time, and location
+- the final reminder from AI Night is therefore the consistent source for date, time, and location
 - the baseline operational assumptions from the request were used: 6 participants, 3 scouters, Wi-Fi available, participant laptops or Chromebooks, optional pre-homework, mixed ability, beginner-friendly structure
 
 ## Final Consistency Check
@@ -45,3 +45,4 @@ Date: 2026-03-24
 - the same five-step sequence now appears across participant, leader, and facilitator pages
 - task ownership is now clearly separated by role
 - no conflicting session instructions remain in the three reviewed role pages
+

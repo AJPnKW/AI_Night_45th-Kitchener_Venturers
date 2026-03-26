@@ -39,16 +39,16 @@ Date: 2026-03-24
 
 ## Expected Public Base URL
 
-- `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/`
+- `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/`
 
 This base URL is inferred from the current repository owner and repository name, assuming no custom domain is added later.
 
 ## Public URL Map
 
-- participant: `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/participant/`
-- parent / guardian: `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/parent/`
-- consent: `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/legal/consent.html`
-- privacy: `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/legal/privacy.html`
+- participant: `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/`
+- parent / guardian: `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/`
+- consent: `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/legal/consent.html`
+- privacy: `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/legal/privacy.html`
 
 ## Leader / Facilitator Discovery Policy
 
@@ -69,4 +69,5 @@ This base URL is inferred from the current repository owner and repository name,
 - README policy is preserved
 - 404 file remains in the publish mirror root
 - live activation is blocked by current GitHub Pages availability for this repository
+
 

@@ -6,5 +6,6 @@
 - A no-framework static site is easier for later volunteer maintenance.
 - Leader and facilitator pages should exist but remain low-profile.
 - The event needs a real privacy and consent model without building a backend.
-- “45th Kitchener Group” replaces prior “24th” references in final deliverables.
+- “1st Stanley Park Venture Company” replaces prior “24th”, “45th Kitchener”, and similar stale group-name references in final deliverables.
+
 

@@ -18,11 +18,11 @@ This report summarizes:
 - Local working repository path remains:
   - `C:\Users\andrew\PROJECTS\Scouter_Jenn`
 - Alias path created to match the renamed repository:
-  - `C:\Users\andrew\PROJECTS\AI_Night_45th-Kitchener_Venturers`
+  - `C:\Users\andrew\PROJECTS\AI_Night_1st-Stanley-Park_Venture-Company`
 - GitHub repository:
-  - `https://github.com/AJPnKW/AI_Night_45th-Kitchener_Venturers`
+  - `https://github.com/AJPnKW/AI_Night_1st-Stanley-Park_Venture-Company`
 - GitHub Pages live URL:
-  - `https://ajpnkw.github.io/AI_Night_45th-Kitchener_Venturers/`
+  - `https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/`
 - Canonical editable site root:
   - `AI_Workshop_4_ventures/web`
 - Publish mirror:
@@ -34,7 +34,7 @@ This report summarizes:
 
 - Git was initialized, organized, committed, and pushed.
 - A GitHub repository was created and later renamed to:
-  - `AI_Night_45th-Kitchener_Venturers`
+  - `AI_Night_1st-Stanley-Park_Venture-Company`
 - GitHub Pages workflow/config was added and retained.
 - The repository was changed from private to public.
 - GitHub Pages was successfully enabled and deployed.
@@ -100,7 +100,7 @@ Important note:
 ### 6. Content And Identity Corrections
 
 - Group identity was corrected from older wrong values to:
-  - `45th Kitchener Group Venturer Scouts`
+  - `1st Stanley Park Venture Company`
 - Older `1st Stanley Park` references in tracked site/docs were corrected where found.
 - The placeholder brand image was replaced with a neutral non-group-colour image to avoid visually implying another scouting group.
 
@@ -175,7 +175,7 @@ What changed because of this:
 
 Feedback:
 - the group is not `1st Stanley Park`
-- the group is `45th Kitchener Group Venturer Scouts`
+- the group is `1st Stanley Park Venture Company`
 
 What changed because of this:
 - tracked site and doc references were corrected
@@ -228,7 +228,7 @@ The following changes were direct responses to user corrections or dissatisfacti
 - repo made public
 - Pages activated and deployed live
 - repository rename alignment
-- group rename to `45th Kitchener Group Venturer Scouts`
+- group rename to `1st Stanley Park Venture Company`
 - neutralized placeholder branding image
 - stronger landing page
 - stronger sign-up workflow
@@ -273,7 +273,7 @@ These items are still outstanding or only partially resolved.
 
 - The actual on-disk folder rename from `Scouter_Jenn` was blocked by an active file handle.
 - A working alias/junction path was created instead:
-  - `C:\Users\andrew\PROJECTS\AI_Night_45th-Kitchener_Venturers`
+  - `C:\Users\andrew\PROJECTS\AI_Night_1st-Stanley-Park_Venture-Company`
 
 ### 5. Workshop-Specific Branding Asset Is Still Placeholder Only
 
@@ -443,3 +443,4 @@ The user's core criticisms were valid:
 - the visual treatment was not yet at the intended quality bar
 
 Those criticisms directly led to the stronger landing page, workflow-based sign-up and waiver pages, pre-flight flow, role access page, and the current live public site structure.
+

@@ -61,7 +61,7 @@ Date: 2026-03-24
 
 ## Assumptions Made
 
-- no explicit newer date or start time was found in tracked site files, so date/time continues to point to the final reminder from Scouter Jenn
+- no explicit newer date or start time was found in tracked site files, so date/time continues to point to the final reminder from AI Night
 - the known location and logistics context from the project instructions was applied: Hope Lutheran Pres Church, 30 Shaftsbury, Wi-Fi available, participants bring laptops or Chromebooks
 - readiness data remains minimal and workshop-specific only
 
@@ -74,3 +74,4 @@ Date: 2026-03-24
 - canonical site QA passed: `reports/runs/20260324_154643_351/qa_results.md`
 - publish mirror QA passed: `reports/runs/20260324_154643_202/qa_results.md`
 - both passes reported 0 missing links and 0 content issues
+

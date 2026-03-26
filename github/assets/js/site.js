@@ -30,7 +30,7 @@ const ROLE_ROUTES = {
 };
 
 function getBasePath() {
-  const repoPath = "/AI_Night_45th-Kitchener_Venturers";
+  const repoPath = "/AI_Night_1st-Stanley-Park_Venture-Company";
   if (window.location.hostname.endsWith("github.io") || window.location.pathname.startsWith(`${repoPath}/`) || window.location.pathname === repoPath) {
     return repoPath;
   }
@@ -532,3 +532,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccessForms();
   initSubmissionDashboard();
 });
+

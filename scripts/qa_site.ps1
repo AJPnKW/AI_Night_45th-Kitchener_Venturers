@@ -18,7 +18,7 @@ $outDir = Join-Path $projectRoot "out\$timestamp"
 $zipPath = Join-Path $outDir "qa_bundle_$timestamp.zip"
 $logPath = Join-Path $logDir "qa_site.log.txt"
 $reportPath = Join-Path $reportDir "qa_results.md"
-$repoPagesPrefix = "AI_Night_45th-Kitchener_Venturers"
+$repoPagesPrefix = "AI_Night_1st-Stanley-Park_Venture-Company"
 
 New-Item -ItemType Directory -Force -Path $logDir, $reportDir, $outDir | Out-Null
 
@@ -103,6 +103,10 @@ foreach ($file in $htmlFiles) {
     $contentIssues.Add("Stale 24th reference found: $relative")
   }
 
+  if ($raw -match "(?i)45th Kitchener|AI_Night_45th-Kitchener_Venturers|Scouter Jenn") {
+    $contentIssues.Add("Stale naming reference found: $relative")
+  }
+
   $matches = [regex]::Matches($raw, '(?:href|src)="([^"]+)"')
   foreach ($match in $matches) {
     $target = $match.Groups[1].Value
@@ -167,3 +171,4 @@ Write-Log "QA complete with status $status"
 if ($status -eq "FAIL") {
   throw "QA failed. See $reportPath"
 }
+
