@@ -1,0 +1,65 @@
+﻿[
+    {
+        "provider":  "OpenAI",
+        "resource":  "Teaching with AI",
+        "url":  "https://openai.com/index/teaching-with-ai/",
+        "local_path":  "",
+        "status":  "failed"
+    },
+    {
+        "provider":  "OpenAI",
+        "resource":  "Teen AI Literacy Blueprint (PDF)",
+        "url":  "https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\OpenAI\\Teen_AI_Literacy_Blueprint_(PDF).pdf",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Google",
+        "resource":  "Teachable Machine",
+        "url":  "https://teachablemachine.withgoogle.com/",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Google\\Teachable_Machine.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Google",
+        "resource":  "Teachable Machine FAQ",
+        "url":  "https://teachablemachine.withgoogle.com/faq",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Google\\Teachable_Machine_FAQ.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Machine Learning for Kids",
+        "resource":  "Project Worksheets",
+        "url":  "https://machinelearningforkids.co.uk/#!/worksheets",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Machine_Learning_for_Kids\\Project_Worksheets.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Artificial Intelligence Foundations",
+        "url":  "https://code.org/en-US/curriculum/artificial-intelligence-foundations",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Artificial_Intelligence_Foundations.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Teach and Learn AI",
+        "url":  "https://code.org/en-US/artificial-intelligence",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Teach_and_Learn_AI.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org / CSforALL",
+        "resource":  "Hour of AI Activities",
+        "url":  "https://csforall.org/en-US/activities/hour-of-ai?utm_source=redirect\u0026utm_medium=web\u0026utm_campaign=hour-of-ai\u0026utm_term=hourofairedirect\u0026utm_content=activites",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org___CSforALL\\Hour_of_AI_Activities.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "ISTE+ASCD",
+        "resource":  "AI Lessons",
+        "url":  "https://iste-ascd.org/ai",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\ISTE+ASCD\\AI_Lessons.html",
+        "status":  "downloaded"
+    }
+]

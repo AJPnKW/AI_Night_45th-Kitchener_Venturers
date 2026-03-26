@@ -1,0 +1,195 @@
+{
+  "generated_utc": "2026-03-22 05:40 UTC",
+  "target_root": "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures",
+  "download_root_name": "downloaded_sources",
+  "catalog_root_name": "reference_catalog",
+  "sources": [
+    {
+      "provider": "OpenAI",
+      "resource": "Teaching with AI",
+      "category": "teacher_guide",
+      "age_fit": "educators / adaptable for ages 15-18",
+      "audience": "facilitator, teacher",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://openai.com/index/teaching-with-ai/",
+      "notes": "Teacher guide with suggested prompts, explanation of ChatGPT, limitations, AI detectors, and bias."
+    },
+    {
+      "provider": "OpenAI",
+      "resource": "Teen AI Literacy Blueprint",
+      "category": "framework_pdf",
+      "age_fit": "teens",
+      "audience": "facilitator, parent, planner",
+      "download_priority": "high",
+      "format_hint": "pdf",
+      "url": "https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf",
+      "notes": "Teen AI literacy framework and implementation guidance."
+    },
+    {
+      "provider": "OpenAI",
+      "resource": "Introducing the Teen Safety Blueprint",
+      "category": "safety_article",
+      "age_fit": "teens",
+      "audience": "facilitator, parent, planner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://openai.com/index/introducing-the-teen-safety-blueprint/",
+      "notes": "Teen-safety framing and protections context."
+    },
+    {
+      "provider": "OpenAI Academy",
+      "resource": "K-12 Education Community Overview",
+      "category": "educator_hub",
+      "age_fit": "educators",
+      "audience": "facilitator, teacher",
+      "download_priority": "medium",
+      "format_hint": "html",
+      "url": "https://academy.openai.com/public/clubs/k-12-education-aacga/overview",
+      "notes": "OpenAI Academy community entry point for K-12 educators."
+    },
+    {
+      "provider": "OpenAI Academy",
+      "resource": "ChatGPT Foundations for Teachers",
+      "category": "teacher_course",
+      "age_fit": "educators",
+      "audience": "facilitator, teacher",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://academy.openai.com/public/clubs/k-12-education-aacga/resources/chatgpt-foundations-for-teachers",
+      "notes": "Teacher-focused ChatGPT foundations resource."
+    },
+    {
+      "provider": "OpenAI Help",
+      "resource": "How can educators get started with ChatGPT?",
+      "category": "faq",
+      "age_fit": "educators / adaptable for ages 15-18",
+      "audience": "facilitator, teacher",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://help.openai.com/en/articles/8313929-how-can-educators-get-started-with-chatgpt",
+      "notes": "Educator FAQ and prompt guidance."
+    },
+    {
+      "provider": "OpenAI Help",
+      "resource": "ChatGPT for Teachers",
+      "category": "product_help",
+      "age_fit": "educators",
+      "audience": "facilitator, school lead",
+      "download_priority": "medium",
+      "format_hint": "html",
+      "url": "https://help.openai.com/en/articles/12844995-chatgpt-for-teachers",
+      "notes": "Teacher-focused ChatGPT product/help information."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Introduction to Generative AI",
+      "category": "lesson_plan",
+      "age_fit": "secondary / high school",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://studio.code.org/courses/foundations-gen-ai-2024/units/1/lessons/1",
+      "notes": "Intro lesson for generative AI."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Chatbots and Large Language Models (LLMs)",
+      "category": "lesson_plan",
+      "age_fit": "secondary / high school",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://studio.code.org/courses/how-ai-works-2023/units/1/lessons/4?viewAs=Instructor",
+      "notes": "Lesson on chatbots and LLMs."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Interacting with Language Models",
+      "category": "lesson_plan",
+      "age_fit": "secondary / high school",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://studio.code.org/courses/customizing-llms-2025/units/1/lessons/2",
+      "notes": "Lesson on interacting with language models."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Societal Impact of Generative AI",
+      "category": "lesson_plan",
+      "age_fit": "secondary / high school",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://studio.code.org/courses/ai-ethics-2023/units/1/lessons/2",
+      "notes": "Ethics and social impact lesson."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Writing Process with AI Tools",
+      "category": "lesson_plan",
+      "age_fit": "secondary / high school",
+      "audience": "facilitator, learner",
+      "download_priority": "medium",
+      "format_hint": "html",
+      "url": "https://studio.code.org/courses/gen-ai-humanities/units/1/lessons/1",
+      "notes": "Applied lesson using AI tools in writing."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Artificial Intelligence Foundations",
+      "category": "curriculum",
+      "age_fit": "grades 8-12",
+      "audience": "facilitator, teacher",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://code.org/en-US/curriculum/artificial-intelligence-foundations",
+      "notes": "Curriculum overview with projects, lessons, and assessments."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Teach and Learn AI with Code.org",
+      "category": "curriculum_portal",
+      "age_fit": "grades 6-12",
+      "audience": "facilitator, teacher",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://code.org/en-US/artificial-intelligence",
+      "notes": "AI education portal and lesson hub."
+    },
+    {
+      "provider": "Google",
+      "resource": "Teachable Machine",
+      "category": "hands_on_tool",
+      "age_fit": "teens",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://teachablemachine.withgoogle.com/",
+      "notes": "No-code model training tool for image, audio, and pose."
+    },
+    {
+      "provider": "Machine Learning for Kids",
+      "resource": "Worksheets",
+      "category": "worksheets",
+      "age_fit": "children / teens",
+      "audience": "facilitator, learner",
+      "download_priority": "high",
+      "format_hint": "html",
+      "url": "https://machinelearningforkids.co.uk/#!/worksheets",
+      "notes": "Project worksheets and printable learner supports."
+    },
+    {
+      "provider": "ISTE+ASCD",
+      "resource": "Artificial Intelligence in Education",
+      "category": "lesson_guides",
+      "age_fit": "K-12 adaptable",
+      "audience": "facilitator, teacher",
+      "download_priority": "medium",
+      "format_hint": "html",
+      "url": "https://iste-ascd.org/ai",
+      "notes": "AI-in-education hub with lesson materials and guidance."
+    }
+  ]
+}

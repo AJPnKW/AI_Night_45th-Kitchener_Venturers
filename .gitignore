@@ -2,8 +2,15 @@ logs/
 out/
 reports/runs/
 *.zip
+*.bak
 Thumbs.db
 Desktop.ini
+Scouter_Jenn-listing.txt
 AI_Workshop_4_ventures/*
 !AI_Workshop_4_ventures/web/
 !AI_Workshop_4_ventures/web/**
+!AI_Workshop_4_ventures/scripts/
+!AI_Workshop_4_ventures/scripts/**
+!AI_Workshop_4_ventures/reference_catalog/
+!AI_Workshop_4_ventures/reference_catalog/**
+AI_Workshop_4_ventures/scripts/fix_leading_numbers.bak

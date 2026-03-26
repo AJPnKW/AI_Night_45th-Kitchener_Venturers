@@ -1,0 +1,86 @@
+{
+  "generated_utc": "2026-03-22 04:05 UTC",
+  "sources": [
+    {
+      "provider": "OpenAI",
+      "resource": "Teaching with AI",
+      "category": "teacher_guide",
+      "age_fit": "15-18",
+      "summary": "Guide for teachers using ChatGPT, including suggested prompts, how ChatGPT works, limitations, AI detectors, and bias.",
+      "url": "https://openai.com/index/teaching-with-ai/",
+      "notes": "Planning/reference source; not a ready-made youth lesson plan."
+    },
+    {
+      "provider": "OpenAI",
+      "resource": "Teen AI Literacy Blueprint (PDF)",
+      "category": "framework",
+      "age_fit": "teens",
+      "summary": "Policy and implementation blueprint for teen AI literacy and teacher preparation.",
+      "url": "https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf",
+      "notes": "Reference context, not a full workshop."
+    },
+    {
+      "provider": "Google",
+      "resource": "Teachable Machine",
+      "category": "hands_on_tool",
+      "age_fit": "teens",
+      "summary": "No-code browser-based ML model creation for image, audio, and pose classification.",
+      "url": "https://teachablemachine.withgoogle.com/",
+      "notes": "Primary live activity tool."
+    },
+    {
+      "provider": "Google",
+      "resource": "Teachable Machine FAQ",
+      "category": "tool_docs",
+      "age_fit": "teens",
+      "summary": "Tool FAQ and usage guidance.",
+      "url": "https://teachablemachine.withgoogle.com/faq",
+      "notes": "Useful for facilitator preparation."
+    },
+    {
+      "provider": "Machine Learning for Kids",
+      "resource": "Project Worksheets",
+      "category": "worksheets",
+      "age_fit": "teens",
+      "summary": "Downloadable step-by-step project worksheets with screenshots for students.",
+      "url": "https://machinelearningforkids.co.uk/#!/worksheets",
+      "notes": "Useful for hands-on extensions."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Artificial Intelligence Foundations",
+      "category": "curriculum",
+      "age_fit": "grades_8_12",
+      "summary": "Free, modular curriculum with projects exploring data, ethics, privacy, and AI; includes lesson plans, tutorials, and assessments.",
+      "url": "https://code.org/en-US/curriculum/artificial-intelligence-foundations",
+      "notes": "Strong classroom-ready source."
+    },
+    {
+      "provider": "Code.org",
+      "resource": "Teach and Learn AI",
+      "category": "curriculum_portal",
+      "age_fit": "grades_6_12",
+      "summary": "AI curricula and teacher professional learning, including How AI Works, Computer Vision, AI and Machine Learning, and Generative AI resources.",
+      "url": "https://code.org/en-US/artificial-intelligence",
+      "notes": "Best source for modular activities and explainers."
+    },
+    {
+      "provider": "Code.org / CSforALL",
+      "resource": "Hour of AI Activities",
+      "category": "activities",
+      "age_fit": "mixed",
+      "summary": "Short AI activities suitable for introductory sessions.",
+      "url": "https://csforall.org/en-US/activities/hour-of-ai?utm_source=redirect&utm_medium=web&utm_campaign=hour-of-ai&utm_term=hourofairedirect&utm_content=activites",
+      "notes": "Good for short-form activities."
+    },
+    {
+      "provider": "ISTE+ASCD",
+      "resource": "AI Lessons",
+      "category": "lesson_guides",
+      "age_fit": "K-12 / adaptable",
+      "summary": "Downloadable lessons from unplugged projects to chatbots and simple video games; available in multiple languages.",
+      "url": "https://iste-ascd.org/ai",
+      "notes": "Useful teacher-ready activity source."
+    }
+  ]
+}

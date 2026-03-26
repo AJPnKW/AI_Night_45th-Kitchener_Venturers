@@ -1,0 +1,82 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Official Resource Catalog</title><style>
+:root{
+  --bg:#0b1020;
+  --bg2:#111831;
+  --panel:#16203f;
+  --panel2:#1e2a52;
+  --line:#33426f;
+  --text:#eef3ff;
+  --muted:#b7c3e0;
+  --accent:#6ee7b7;
+  --accent2:#7dd3fc;
+  --warn:#fbbf24;
+  --danger:#fb7185;
+  --chip:#22315e;
+  --shadow:0 10px 30px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0e1530 45%, #101936);color:var(--text);font-family:Segoe UI,Arial,sans-serif}
+body{padding:24px}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{margin:.2rem 0 .8rem 0}
+h1{font-size:2rem}
+h2{font-size:1.35rem;border-bottom:1px solid var(--line);padding-bottom:.45rem;margin-top:1.6rem}
+h3{font-size:1.05rem;margin-top:1.1rem}
+p,li,td,th{font-size:.95rem;line-height:1.45}
+small,.small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:1.4fr .9fr;gap:16px}
+.badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--chip);margin-right:8px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px 0}
+th,td{border:1px solid var(--line);padding:10px;vertical-align:top}
+th{background:#1a264b;text-align:left}
+code,pre{font-family:Consolas,monospace}
+pre{background:#0a0f20;border:1px solid var(--line);padding:12px;border-radius:12px;overflow:auto}
+.button{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,#2563eb,#1d4ed8);color:white;border:1px solid #2b59d9}
+.note{border-left:4px solid var(--accent);padding:10px 12px;background:#10203d;border-radius:8px}
+.warn{border-left-color:var(--warn)}
+.danger{border-left-color:var(--danger)}
+.kpi{font-size:1.5rem;font-weight:700}
+hr{border:none;border-top:1px solid var(--line);margin:22px 0}
+input,select,button{font:inherit}
+</style></head>
+<body>
+<h1>Official AI Learning Resource Catalog</h1>
+<div class="small">Prepared 2026-03-22 04:05 UTC</div>
+<p>This catalog summarizes official sources identified for youth AI learning and workshop planning.</p>
+<table>
+<tr><th>Provider</th><th>Resource</th><th>Category</th><th>Age Fit</th><th>Summary</th><th>Official Link</th><th>Workshop Use</th></tr>
+<tr><td>OpenAI</td><td>Teaching with AI</td><td>teacher_guide</td><td>15-18</td><td>Guide for teachers using ChatGPT, including suggested prompts, how ChatGPT works, limitations, AI detectors, and bias.</td><td><a href="https://openai.com/index/teaching-with-ai/">https://openai.com/index/teaching-with-ai/</a></td><td>Planning/reference source; not a ready-made youth lesson plan.</td></tr>
+<tr><td>OpenAI</td><td>Teen AI Literacy Blueprint (PDF)</td><td>framework</td><td>teens</td><td>Policy and implementation blueprint for teen AI literacy and teacher preparation.</td><td><a href="https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf">https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf</a></td><td>Reference context, not a full workshop.</td></tr>
+<tr><td>Google</td><td>Teachable Machine</td><td>hands_on_tool</td><td>teens</td><td>No-code browser-based ML model creation for image, audio, and pose classification.</td><td><a href="https://teachablemachine.withgoogle.com/">https://teachablemachine.withgoogle.com/</a></td><td>Primary live activity tool.</td></tr>
+<tr><td>Google</td><td>Teachable Machine FAQ</td><td>tool_docs</td><td>teens</td><td>Tool FAQ and usage guidance.</td><td><a href="https://teachablemachine.withgoogle.com/faq">https://teachablemachine.withgoogle.com/faq</a></td><td>Useful for facilitator preparation.</td></tr>
+<tr><td>Machine Learning for Kids</td><td>Project Worksheets</td><td>worksheets</td><td>teens</td><td>Downloadable step-by-step project worksheets with screenshots for students.</td><td><a href="https://machinelearningforkids.co.uk/#!/worksheets">https://machinelearningforkids.co.uk/#!/worksheets</a></td><td>Useful for hands-on extensions.</td></tr>
+<tr><td>Code.org</td><td>Artificial Intelligence Foundations</td><td>curriculum</td><td>grades_8_12</td><td>Free, modular curriculum with projects exploring data, ethics, privacy, and AI; includes lesson plans, tutorials, and assessments.</td><td><a href="https://code.org/en-US/curriculum/artificial-intelligence-foundations">https://code.org/en-US/curriculum/artificial-intelligence-foundations</a></td><td>Strong classroom-ready source.</td></tr>
+<tr><td>Code.org</td><td>Teach and Learn AI</td><td>curriculum_portal</td><td>grades_6_12</td><td>AI curricula and teacher professional learning, including How AI Works, Computer Vision, AI and Machine Learning, and Generative AI resources.</td><td><a href="https://code.org/en-US/artificial-intelligence">https://code.org/en-US/artificial-intelligence</a></td><td>Best source for modular activities and explainers.</td></tr>
+<tr><td>Code.org / CSforALL</td><td>Hour of AI Activities</td><td>activities</td><td>mixed</td><td>Short AI activities suitable for introductory sessions.</td><td><a href="https://csforall.org/en-US/activities/hour-of-ai?utm_source=redirect&amp;utm_medium=web&amp;utm_campaign=hour-of-ai&amp;utm_term=hourofairedirect&amp;utm_content=activites">https://csforall.org/en-US/activities/hour-of-ai?utm_source=redirect&amp;utm_medium=web&amp;utm_campaign=hour-of-ai&amp;utm_term=hourofairedirect&amp;utm_content=activites</a></td><td>Good for short-form activities.</td></tr>
+<tr><td>ISTE+ASCD</td><td>AI Lessons</td><td>lesson_guides</td><td>K-12 / adaptable</td><td>Downloadable lessons from unplugged projects to chatbots and simple video games; available in multiple languages.</td><td><a href="https://iste-ascd.org/ai">https://iste-ascd.org/ai</a></td><td>Useful teacher-ready activity source.</td></tr>
+</table>
+
+<h2>Planner Notes</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Best Live Hands-On Source</h3>
+    <p>Teachable Machine is the strongest no-code entry point for a 90–120 minute youth session.</p>
+  </div>
+  <div class="card">
+    <h3>Best Classroom Structure</h3>
+    <p>Code.org provides the most classroom-ready mix of lesson plans, assessments, and teacher supports.</p>
+  </div>
+  <div class="card">
+    <h3>Best Extension Worksheets</h3>
+    <p>Machine Learning for Kids provides downloadable student worksheets and project structures.</p>
+  </div>
+  <div class="card">
+    <h3>Best Teacher Context</h3>
+    <p>OpenAI Teaching with AI and ISTE AI Lessons help frame responsible and practical use.</p>
+  </div>
+</div>
+</body></html>

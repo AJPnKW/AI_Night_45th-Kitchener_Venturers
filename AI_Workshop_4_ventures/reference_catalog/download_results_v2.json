@@ -1,0 +1,121 @@
+﻿[
+    {
+        "provider":  "OpenAI",
+        "resource":  "Teaching with AI",
+        "url":  "https://openai.com/index/teaching-with-ai/",
+        "local_path":  "",
+        "status":  "failed"
+    },
+    {
+        "provider":  "OpenAI",
+        "resource":  "Teen AI Literacy Blueprint",
+        "url":  "https://cdn.openai.com/pdf/openai-teen-literacy-blueprint.pdf",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\OpenAI\\Teen_AI_Literacy_Blueprint.pdf",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "OpenAI",
+        "resource":  "Introducing the Teen Safety Blueprint",
+        "url":  "https://openai.com/index/introducing-the-teen-safety-blueprint/",
+        "local_path":  "",
+        "status":  "failed"
+    },
+    {
+        "provider":  "OpenAI Academy",
+        "resource":  "K-12 Education Community Overview",
+        "url":  "https://academy.openai.com/public/clubs/k-12-education-aacga/overview",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\OpenAI_Academy\\K-12_Education_Community_Overview.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "OpenAI Academy",
+        "resource":  "ChatGPT Foundations for Teachers",
+        "url":  "https://academy.openai.com/public/clubs/k-12-education-aacga/resources/chatgpt-foundations-for-teachers",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\OpenAI_Academy\\ChatGPT_Foundations_for_Teachers.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "OpenAI Help",
+        "resource":  "How can educators get started with ChatGPT?",
+        "url":  "https://help.openai.com/en/articles/8313929-how-can-educators-get-started-with-chatgpt",
+        "local_path":  "",
+        "status":  "failed"
+    },
+    {
+        "provider":  "OpenAI Help",
+        "resource":  "ChatGPT for Teachers",
+        "url":  "https://help.openai.com/en/articles/12844995-chatgpt-for-teachers",
+        "local_path":  "",
+        "status":  "failed"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Introduction to Generative AI",
+        "url":  "https://studio.code.org/courses/foundations-gen-ai-2024/units/1/lessons/1",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Introduction_to_Generative_AI.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Chatbots and Large Language Models (LLMs)",
+        "url":  "https://studio.code.org/courses/how-ai-works-2023/units/1/lessons/4?viewAs=Instructor",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Chatbots_and_Large_Language_Models_(LLMs).html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Interacting with Language Models",
+        "url":  "https://studio.code.org/courses/customizing-llms-2025/units/1/lessons/2",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Interacting_with_Language_Models.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Societal Impact of Generative AI",
+        "url":  "https://studio.code.org/courses/ai-ethics-2023/units/1/lessons/2",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Societal_Impact_of_Generative_AI.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Writing Process with AI Tools",
+        "url":  "https://studio.code.org/courses/gen-ai-humanities/units/1/lessons/1",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Writing_Process_with_AI_Tools.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Artificial Intelligence Foundations",
+        "url":  "https://code.org/en-US/curriculum/artificial-intelligence-foundations",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Artificial_Intelligence_Foundations.html",
+        "status":  "skipped_existing"
+    },
+    {
+        "provider":  "Code.org",
+        "resource":  "Teach and Learn AI with Code.org",
+        "url":  "https://code.org/en-US/artificial-intelligence",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Code.org\\Teach_and_Learn_AI_with_Code.org.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "Google",
+        "resource":  "Teachable Machine",
+        "url":  "https://teachablemachine.withgoogle.com/",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Google\\Teachable_Machine.html",
+        "status":  "skipped_existing"
+    },
+    {
+        "provider":  "Machine Learning for Kids",
+        "resource":  "Worksheets",
+        "url":  "https://machinelearningforkids.co.uk/#!/worksheets",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\Machine_Learning_for_Kids\\Worksheets.html",
+        "status":  "downloaded"
+    },
+    {
+        "provider":  "ISTE+ASCD",
+        "resource":  "Artificial Intelligence in Education",
+        "url":  "https://iste-ascd.org/ai",
+        "local_path":  "C:\\Users\\andrew\\PROJECTS\\Scouter_Jenn\\AI_Workshop_4_ventures\\downloaded_sources\\ISTE+ASCD\\Artificial_Intelligence_in_Education.html",
+        "status":  "downloaded"
+    }
+]
