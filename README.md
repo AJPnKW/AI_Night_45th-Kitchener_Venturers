@@ -34,7 +34,7 @@ Browser-first is the canonical participant model. Public content is designed for
 | Exercises | [Exercises](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/exercises.html) |
 | Reflection workbook | [Reflections](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/reflections.html) |
 | Knowledge base | [Knowledge base](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/kb/index.html) |
-| Project dashboard | [Coordination dashboard](AI_Workshop_4_ventures/docs/project_coordination_dashboard.html) |
+| Project dashboard | [Project overview](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/index.html) |
 
 ## What This Project Supports
 
@@ -72,7 +72,7 @@ Browser-first is the canonical participant model. Public content is designed for
 | Parent or guardian | [Parent guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/index.html) | Browser-first expectations, trust layer, privacy and fallback notes |
 | Leader | [Leader guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/leader/index.html) | Support role, logistics, fallback handling, escalation cues |
 | Facilitator | [Facilitator run-of-show](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/facilitator/run-of-show.html) | Live sequence, demo prompts, recovery notes |
-| Portfolio or operator view | [Project management case study](AI_Workshop_4_ventures/docs/project_management_case_study.html) | Right-sized methodology, phases, controls, and evidence |
+| Portfolio or operator view | [Project case study](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/case-study.html) | Right-sized methodology, phases, controls, and evidence |
 
 ## Project Management Thread
 
@@ -80,14 +80,11 @@ This repo can be presented as a project-light delivery case study rather than on
 
 | Artifact | Purpose |
 | --- | --- |
-| [Project management case study](AI_Workshop_4_ventures/docs/project_management_case_study.html) | Portfolio summary and interview framing |
-| [Project right-sizing approach](AI_Workshop_4_ventures/docs/project_right_sizing_approach.html) | Why a light methodology was appropriate |
-| [Project charter and success measures](AI_Workshop_4_ventures/docs/project_charter_and_success_measures.html) | Scope, constraints, outcomes, and evidence routes |
-| [Project phase delivery thread](AI_Workshop_4_ventures/docs/project_phase_delivery_thread.html) | Discovery, proof of concept, correction, and hardening path |
-| [Decision, risk, issue, and change log](AI_Workshop_4_ventures/docs/project_decision_risk_issue_change_log.html) | Compact control view of key choices and open items |
-| [Validated vs unvalidated status](AI_Workshop_4_ventures/docs/current_state_validated_vs_unvalidated.html) | What is proven, what is blocked, and what remains outside repo scope |
-| [Participant workbook and forms solution](AI_Workshop_4_ventures/docs/participant_workbook_and_forms_solution.html) | Recommended LMS-like participant workflow without building a full LMS |
-| [Codex PM backfill prompt template](AI_Workshop_4_ventures/docs/codex_prompt_project_management_backfill_template.html) | Reusable prompt for another Codex thread |
+| [Project case study](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/case-study.html) | Portfolio summary and interview framing |
+| [Project right-sizing](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/right-sizing.html) | Why a light methodology was appropriate |
+| [Project phases and status](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/status.html) | Phases, success measures, and current status |
+| [Participant workbook solution](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/workbook-solution.html) | Recommended LMS-like participant workflow without building a full LMS |
+| [Codex PM backfill prompt](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/codex-prompt.html) | Reusable prompt for another Codex thread |
 
 ## What This Repo Contains
 
