@@ -28,11 +28,12 @@ Browser-first is the canonical participant model. Public content is designed for
 | --- | --- |
 | Live site | [Open the public site](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/) |
 | Participant guide | [Youth page](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/index.html) |
+| Participant workbook | [Open workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) |
 | Parent guide | [Parent guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/index.html) |
 | Leader guide | [Leader guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/leader/index.html) |
 | Facilitator run-of-show | [Run of show](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/facilitator/run-of-show.html) |
 | Exercises | [Exercises](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/exercises.html) |
-| Reflection workbook | [Reflections](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/reflections.html) |
+| Reflection page | [Reflections](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/reflections.html) |
 | Knowledge base | [Knowledge base](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/kb/index.html) |
 | Project dashboard | [Project overview](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/index.html) |
 | Executive summary | [Portfolio summary](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/executive-summary.html) |
@@ -69,7 +70,7 @@ Browser-first is the canonical participant model. Public content is designed for
 
 | Role | Best page | What it covers |
 | --- | --- | --- |
-| Youth participant | [Participant guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/index.html) | What to bring, how the session works, exercises, reflections |
+| Youth participant | [Participant workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) | Guided workbook flow, private notes, prompt improvement, reflections |
 | Parent or guardian | [Parent guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/index.html) | Browser-first expectations, trust layer, privacy and fallback notes |
 | Leader | [Leader guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/leader/index.html) | Support role, logistics, fallback handling, escalation cues |
 | Facilitator | [Facilitator run-of-show](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/facilitator/run-of-show.html) | Live sequence, demo prompts, recovery notes |
@@ -115,7 +116,7 @@ This repo can be presented as a project-light delivery case study rather than on
 
 - Browser-first model is normalized and active
 - Public pages for participants, parents, leaders, and facilitators are present
-- Exercises and reflection workbook are present
+- Participant workbook, exercises, and reflection pages are present
 - Knowledge base and reference pages are present
 - Packaging, archive rationalization, and validation are present
 - Project-light PM artifacts are now explicit and portfolio-ready
