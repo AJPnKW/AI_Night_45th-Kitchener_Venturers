@@ -28,12 +28,13 @@ Browser-first is the canonical participant model. Public content is designed for
 | --- | --- |
 | Live site | [Open the public site](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/) |
 | Participant guide | [Youth page](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/index.html) |
-| Participant workbook | [Open workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) |
+| Workbook start | [Start workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) |
+| Workbook step: prompt practice | [Prompt practice](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/exercises.html) |
+| Workbook step: image lab | [Image lab](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/image-lab.html) |
+| Workbook step: reflection summary | [Reflection summary](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/reflections.html) |
 | Parent guide | [Parent guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/index.html) |
 | Leader guide | [Leader guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/leader/index.html) |
 | Facilitator run-of-show | [Run of show](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/facilitator/run-of-show.html) |
-| Exercises | [Exercises](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/exercises.html) |
-| Reflection page | [Reflections](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/reflections.html) |
 | Knowledge base | [Knowledge base](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/kb/index.html) |
 | Project dashboard | [Project overview](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/index.html) |
 | Executive summary | [Portfolio summary](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/project/executive-summary.html) |
@@ -44,7 +45,7 @@ Browser-first is the canonical participant model. Public content is designed for
 - Guided prompt practice with weak-vs-strong comparisons
 - Parent and guardian trust-layer content
 - Role-specific support pages for youth, parents, leaders, and facilitators
-- Exercises, reflections, and printable takeaways
+- A unified participant workbook flow with step pages, local save/resume, and printable takeaways
 - Knowledge and reference content for safer, more confident AI use
 - Right-sized project management artifacts showing phases, decisions, risks, scope control, and validation
 
@@ -70,7 +71,7 @@ Browser-first is the canonical participant model. Public content is designed for
 
 | Role | Best page | What it covers |
 | --- | --- | --- |
-| Youth participant | [Participant workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) | Guided workbook flow, private notes, prompt improvement, reflections |
+| Youth participant | [Participant workbook](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/participant/workbook.html) | Guided multi-step workbook flow, private notes, prompt practice, image work, reflections |
 | Parent or guardian | [Parent guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/parent/index.html) | Browser-first expectations, trust layer, privacy and fallback notes |
 | Leader | [Leader guide](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/leader/index.html) | Support role, logistics, fallback handling, escalation cues |
 | Facilitator | [Facilitator run-of-show](https://ajpnkw.github.io/AI_Night_1st-Stanley-Park_Venture-Company/facilitator/run-of-show.html) | Live sequence, demo prompts, recovery notes |
@@ -116,7 +117,7 @@ This repo can be presented as a project-light delivery case study rather than on
 
 - Browser-first model is normalized and active
 - Public pages for participants, parents, leaders, and facilitators are present
-- Participant workbook, exercises, and reflection pages are present
+- Unified participant workbook start, prompt-practice, image-lab, and reflection-summary pages are present
 - Knowledge base and reference pages are present
 - Packaging, archive rationalization, and validation are present
 - Project-light PM artifacts are now explicit and portfolio-ready
@@ -129,5 +130,5 @@ This repo can be presented as a project-light delivery case study rather than on
 - Public informational pages are intended for participants, families, and leaders.
 - Internal or protected areas may exist operationally; passwords or access credentials are not published here.
 - The live public destination is GitHub Pages. The working source is `AI_Workshop_4_ventures/web/`, and the deploy mirror is `github/`.
-- Workbook notes stay local to the participant browser by default. Structured surveys and feedback use organizer-issued Google Forms outside the public site.
+- Workbook notes stay local to the participant browser by default, and the workbook now behaves as one multi-step browser flow rather than separate disconnected tools. Structured surveys and feedback use organizer-issued Google Forms outside the public site.
 - Some PM artifacts were formalized retrospectively from actual execution evidence. That is intentional and more honest than pretending a small proof of concept had full enterprise paperwork from day one.

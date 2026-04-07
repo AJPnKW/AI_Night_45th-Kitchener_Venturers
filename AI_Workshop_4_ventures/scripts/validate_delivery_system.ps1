@@ -90,6 +90,7 @@ $requiredPages = @(
   "web\participant\after.html",
   "web\participant\workbook.html",
   "web\participant\exercises.html",
+  "web\participant\image-lab.html",
   "web\participant\reflections.html",
   "web\parent\index.html",
   "web\leader\index.html",
@@ -121,14 +122,19 @@ $contentChecks = @(
   @{ path = "web\index.html"; pattern = "Browser-first AI night for Scouts and Venturers"; message = "Landing page is missing the browser-first workshop heading." },
   @{ path = "web\index.html"; pattern = "Not needed by default"; message = "Landing page is missing the no-install-by-default guidance." },
   @{ path = "web\participant\index.html"; pattern = "You do not need to be a coder"; message = "Youth page is missing the low-pressure browser-first reassurance." },
-  @{ path = "web\participant\workbook.html"; pattern = "Private learner workbook"; message = "Workbook page is missing the private learner workbook section." },
-  @{ path = "web\participant\workbook.html"; pattern = "Workbook helper"; message = "Workbook page is missing the workbook helper guidance." },
+  @{ path = "web\participant\index.html"; pattern = "one workbook journey"; message = "Youth page is missing the unified workbook-journey wording." },
+  @{ path = "web\participant\workbook.html"; pattern = "Step 1 of 4: Start and setup"; message = "Workbook page is missing the step-1 workbook section." },
+  @{ path = "web\participant\workbook.html"; pattern = "Step 1 of 4"; message = "Workbook start page is missing the step-1 flow marker." },
+  @{ path = "web\participant\workbook.html"; pattern = "How this workbook engine works"; message = "Workbook start page is missing the workbook-engine explanation." },
   @{ path = "web\participant\exercises.html"; pattern = "Guided"; message = "Exercises page is missing the Guided level." },
   @{ path = "web\participant\exercises.html"; pattern = "Build"; message = "Exercises page is missing the Build level." },
   @{ path = "web\participant\exercises.html"; pattern = "Remix"; message = "Exercises page is missing the Remix level." },
   @{ path = "web\participant\exercises.html"; pattern = "Stretch"; message = "Exercises page is missing the Stretch level." },
-  @{ path = "web\participant\exercises.html"; pattern = "card rack for your private participant workbook"; message = "Exercises page is missing the workbook-routing guidance." },
-  @{ path = "web\participant\reflections.html"; pattern = "Reflection prompts"; message = "Reflection page is missing the reflection prompts section." },
+  @{ path = "web\participant\exercises.html"; pattern = "Step 2 of 4"; message = "Exercises page is missing the step-2 flow marker." },
+  @{ path = "web\participant\image-lab.html"; pattern = "Step 3 of 4"; message = "Image lab page is missing the step-3 flow marker." },
+  @{ path = "web\participant\image-lab.html"; pattern = "Image and extension lab"; message = "Image lab page is missing the unified workbook image-lab heading." },
+  @{ path = "web\participant\reflections.html"; pattern = "Step 4 of 4"; message = "Reflection page is missing the step-4 flow marker." },
+  @{ path = "web\participant\reflections.html"; pattern = "Full workbook summary"; message = "Reflection page is missing the full workbook summary section." },
   @{ path = "web\parent\index.html"; pattern = "Browser-first by default"; message = "Parent page is missing the browser-first trust heading." },
   @{ path = "web\parent\index.html"; pattern = "What your child will not be required to do"; message = "Parent page is missing the reassurance section." },
   @{ path = "web\leader\index.html"; pattern = "Do not push VM setup as the main route"; message = "Leader page is missing the anti-derail guidance." },
@@ -255,7 +261,7 @@ if (Test-Path $readmePath) {
 }
 
 $publishMirrorRoot = Join-Path $repoRoot "github"
-foreach ($mirrorPath in @("index.html", "participant\exercises.html", "participant\reflections.html", "kb\index.html")) {
+foreach ($mirrorPath in @("index.html", "participant\workbook.html", "participant\exercises.html", "participant\image-lab.html", "participant\reflections.html", "kb\index.html")) {
   if (-not (Test-Path (Join-Path $publishMirrorRoot $mirrorPath))) {
     $issues.Add("Publish mirror missing required route: github\$mirrorPath")
   }

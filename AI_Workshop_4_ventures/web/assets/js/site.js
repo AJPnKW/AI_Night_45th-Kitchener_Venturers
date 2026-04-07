@@ -260,6 +260,68 @@ const workbookMatrix = {
   }
 };
 
+const workbookFieldLabels = {
+  participant_name: "Your name or initials",
+  interest_topic: "Topic you want to work on tonight",
+  level: "Exercise level",
+  category: "Exercise category",
+  session_goal: "What you want this workbook to help you do",
+  comfort_support: "What would help you feel comfortable tonight",
+  help_flag: "Leader or facilitator check-in",
+  starter: "Weak starter prompt",
+  improved: "Your improved prompt",
+  changes: "What changed in your prompt",
+  expectation: "What you were hoping for",
+  output_quality: "Output quality so far",
+  result: "Did the result meet your expectation",
+  gap: "What gap remained",
+  verify: "What you would still verify",
+  coaching_response: "Next improvement you want to try",
+  image_goal: "What image you were trying to create",
+  image_starter: "Weak image prompt",
+  image_improved: "Improved image prompt",
+  image_changes: "What changed in the image prompt",
+  image_result: "How close the image result was",
+  image_gap: "What you would improve next",
+  extension: "Fast-finisher extension",
+  codex_note: "Optional Codex observation note",
+  reflection_changed: "What changed most",
+  reflection_worked: "What worked better than expected",
+  reflection_surprised: "What surprised you",
+  reflection_different: "What you would do differently next time",
+  safe_use: "What you would still check before trusting AI output",
+  takeaway: "What you want to keep after tonight",
+  next: "Where you could use this safely after tonight"
+};
+
+const workbookFlowSteps = [
+  { slug: "workbook", completeIf: ["participant_name", "interest_topic", "session_goal"] },
+  { slug: "exercises", completeIf: ["starter", "improved", "changes"] },
+  { slug: "image-lab", completeIf: ["image_goal", "image_improved", "image_changes"] },
+  { slug: "reflections", completeIf: ["reflection_changed", "takeaway", "next"] }
+];
+
+function getStorageKey(form) {
+  return `${window.siteConfig.formStoragePrefix}${form.dataset.draftKey || form.id || "form"}`;
+}
+
+function readStoredPayloadFromKey(key) {
+  const raw = localStorage.getItem(key);
+  if (!raw) {
+    return {};
+  }
+  try {
+    return JSON.parse(raw) || {};
+  } catch {
+    localStorage.removeItem(key);
+    return {};
+  }
+}
+
+function readStoredPayload(form) {
+  return readStoredPayloadFromKey(getStorageKey(form));
+}
+
 function getWorkbookState(form) {
   const category = form.querySelector("[name='category']")?.value || "Prompt improvement";
   const level = form.querySelector("[name='level']")?.value || "Guided";
@@ -322,7 +384,7 @@ function updateSummary(form) {
     return;
   }
 
-  const pairs = [];
+  const merged = readStoredPayload(form);
   form.querySelectorAll("input, select, textarea").forEach((field) => {
     if (!field.name || field.type === "button" || field.type === "submit") {
       return;
@@ -341,15 +403,13 @@ function updateSummary(form) {
       value = field.value;
     } else {
       value = field.value.trim();
-      if (!value) {
-        return;
-      }
     }
-
-    const label = form.querySelector(`label[for="${field.id}"]`);
-    const name = label ? label.textContent.trim() : field.name;
-    pairs.push([name, value]);
+    merged[field.name] = value;
   });
+
+  const pairs = Object.entries(merged)
+    .filter(([, value]) => String(value || "").trim() !== "" && value !== false)
+    .map(([name, value]) => [workbookFieldLabels[name] || name, String(value)]);
 
   if (!pairs.length) {
     target.innerHTML = "<p class=\"small\">Your entered details will appear here so you can print or save them.</p>";
@@ -360,8 +420,8 @@ function updateSummary(form) {
 }
 
 function saveDraft(form) {
-  const key = `${window.siteConfig.formStoragePrefix}${form.dataset.draftKey || form.id || "form"}`;
-  const payload = {};
+  const key = getStorageKey(form);
+  const payload = readStoredPayloadFromKey(key);
 
   form.querySelectorAll("input, select, textarea").forEach((field) => {
     if (!field.name || field.type === "submit" || field.type === "button") {
@@ -384,34 +444,24 @@ function saveDraft(form) {
 }
 
 function loadDraft(form) {
-  const key = `${window.siteConfig.formStoragePrefix}${form.dataset.draftKey || form.id || "form"}`;
-  const raw = localStorage.getItem(key);
-  if (!raw) {
-    return;
-  }
+  const payload = readStoredPayload(form);
+  form.querySelectorAll("input, select, textarea").forEach((field) => {
+    if (!field.name || !(field.name in payload)) {
+      return;
+    }
 
-  try {
-    const payload = JSON.parse(raw);
-    form.querySelectorAll("input, select, textarea").forEach((field) => {
-      if (!field.name || !(field.name in payload)) {
-        return;
-      }
-
-      if (field.type === "checkbox") {
-        field.checked = Boolean(payload[field.name]);
-      } else if (field.type === "radio") {
-        field.checked = payload[field.name] === field.value;
-      } else {
-        field.value = payload[field.name];
-      }
-    });
-  } catch {
-    localStorage.removeItem(key);
-  }
+    if (field.type === "checkbox") {
+      field.checked = Boolean(payload[field.name]);
+    } else if (field.type === "radio") {
+      field.checked = payload[field.name] === field.value;
+    } else {
+      field.value = payload[field.name];
+    }
+  });
 }
 
 function downloadDraft(form) {
-  const payload = {};
+  const payload = readStoredPayload(form);
   form.querySelectorAll("input, select, textarea").forEach((field) => {
     if (!field.name || field.type === "submit" || field.type === "button") {
       return;
@@ -434,6 +484,65 @@ function downloadDraft(form) {
   link.download = `${form.dataset.downloadName || "ai-night-form"}.json`;
   link.click();
   URL.revokeObjectURL(href);
+}
+
+function renderWorkbookSnapshot(target) {
+  const draftKey = target.dataset.workbookSnapshot;
+  if (!draftKey) {
+    return;
+  }
+
+  const payload = readStoredPayloadFromKey(`${window.siteConfig.formStoragePrefix}${draftKey}`);
+  const pairs = Object.entries(payload)
+    .filter(([, value]) => String(value || "").trim() !== "" && value !== false)
+    .map(([name, value]) => [workbookFieldLabels[name] || name, String(value)]);
+
+  if (!pairs.length) {
+    target.innerHTML = "<p class=\"small\">Your saved workbook notes will appear here as you fill them in.</p>";
+    return;
+  }
+
+  target.innerHTML = `<dl class="summary-list">${pairs.map(([name, value]) => `<div><dt>${escapeHtml(name)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>`;
+}
+
+function updateWorkbookFlowStatus() {
+  const payload = readStoredPayloadFromKey(`${window.siteConfig.formStoragePrefix}participant_workbook`);
+  const resumeNode = document.querySelector("[data-workbook-resume]");
+  let furthestCompleted = "Start and setup";
+
+  workbookFlowSteps.forEach((step) => {
+    const card = document.querySelector(`[data-workbook-step="${step.slug}"]`);
+    const complete = step.completeIf.some((field) => String(payload[field] || "").trim() !== "");
+    if (card) {
+      const titleNode = card.querySelector("h3");
+      const badge = card.querySelector("[data-workbook-complete-badge]");
+      if (complete) {
+        card.classList.add("is-complete");
+        if (!badge && titleNode) {
+          titleNode.insertAdjacentHTML("beforeend", " <span class=\"small\" data-workbook-complete-badge>Saved</span>");
+        }
+      } else {
+        card.classList.remove("is-complete");
+        badge?.remove();
+      }
+    }
+    if (complete) {
+      const match = workbookFlowSteps.find((item) => item.slug === step.slug);
+      if (match) {
+        const labelMap = {
+          workbook: "Start and setup",
+          exercises: "Prompt practice",
+          "image-lab": "Image and extension lab",
+          reflections: "Reflection and summary"
+        };
+        furthestCompleted = labelMap[step.slug] || furthestCompleted;
+      }
+    }
+  });
+
+  if (resumeNode) {
+    resumeNode.textContent = `Your workbook engine is saving locally in this browser. If you leave and come back on this device, you should be able to resume from ${furthestCompleted}.`;
+  }
 }
 
 function updateAgeNotice(form) {
@@ -461,12 +570,16 @@ function initWorkflowForm(form) {
   updateWorkbookAssistant(form);
   updateSummary(form);
   updateAgeNotice(form);
+  document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+  updateWorkbookFlowStatus();
 
   form.addEventListener("input", () => {
     saveDraft(form);
     updateWorkbookAssistant(form);
     updateSummary(form);
     updateAgeNotice(form);
+    document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+    updateWorkbookFlowStatus();
   });
 
   form.addEventListener("change", () => {
@@ -474,6 +587,8 @@ function initWorkflowForm(form) {
     updateWorkbookAssistant(form);
     updateSummary(form);
     updateAgeNotice(form);
+    document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+    updateWorkbookFlowStatus();
   });
 
   form.addEventListener("submit", (event) => {
@@ -481,6 +596,8 @@ function initWorkflowForm(form) {
     event.preventDefault();
     saveDraft(form);
     updateSummary(form);
+    document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+    updateWorkbookFlowStatus();
     if (status) {
       status.textContent = "This workbook stays on this device. Use Save in this browser, Download report, or Print / Save as PDF. Pre-event and feedback collection are handled separately through organizer-issued Google Forms.";
     }
@@ -495,6 +612,8 @@ function initWorkflowForm(form) {
       if (status) {
         status.textContent = "Draft saved on this device.";
       }
+      document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+      updateWorkbookFlowStatus();
     });
   }
 
@@ -525,6 +644,8 @@ function initWorkflowForm(form) {
       updateWorkbookAssistant(form);
       updateSummary(form);
       updateAgeNotice(form);
+      document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => renderWorkbookSnapshot(target));
+      updateWorkbookFlowStatus();
     });
   }
 }
@@ -656,6 +777,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-workflow-form]").forEach((form) => {
     initWorkflowForm(form);
   });
+
+  document.querySelectorAll("[data-workbook-snapshot]").forEach((target) => {
+    renderWorkbookSnapshot(target);
+  });
+
+  updateWorkbookFlowStatus();
 
   document.querySelectorAll("[data-response-sheet-label]").forEach((node) => {
     node.textContent = window.siteConfig.responseSheetLabel;
