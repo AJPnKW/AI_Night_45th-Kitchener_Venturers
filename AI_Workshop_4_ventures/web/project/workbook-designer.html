@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Workbook Designer Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+  --bg: #f5f7fa;
+  --panel: #ffffff;
+  --line: #d8dee4;
+  --text: #1f2933;
+  --muted: #52606d;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+header { padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; }
+h1 { margin: 0 0 6px 0; font-size: 24px; }
+p { margin: 0; color: var(--muted); }
+main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; padding: 16px; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+label { display: block; font-weight: bold; margin-top: 10px; margin-bottom: 4px; }
+input[type="text"], input[type="number"], textarea, select {
+  width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 8px; font: inherit;
+}
+textarea { min-height: 90px; resize: vertical; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+button {
+  padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: #fff; cursor: pointer; font: inherit;
+}
+button:hover { background: #f0f4f8; }
+.small { font-size: 12px; color: var(--muted); }
+.step-list { max-height: 440px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }
+.step-item {
+  padding: 10px; border-bottom: 1px solid var(--line); cursor: pointer;
+}
+.step-item.active { background: #eef4ff; }
+.step-item:last-child { border-bottom: none; }
+.kv { display: grid; grid-template-columns: 180px 1fr; gap: 8px; margin-top: 8px; }
+.preview-card {
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 10px; background: #fcfdff;
+}
+.row { display: grid; grid-template-columns: 1fr 140px 140px; gap: 8px; }
+.badge { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; font-size: 12px; margin-right: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Workbook Designer Prototype</h1>
+  <p>Organizer-facing authoring tool. Preloaded with the current Jenn's Ventures AI Night session model.</p>
+  <div class="toolbar">
+    <button id="newSeedBtn">New seeded build</button>
+    <button id="newEmptyBtn">New empty build</button>
+    <button id="openBtn">Open existing JSON</button>
+    <button id="saveBtn">Save current build JSON</button>
+    <button id="summaryBtn">Download outline HTML</button>
+    <button id="addStepBtn">Add step</button>
+    <button id="deleteStepBtn">Delete selected step</button>
+    <input id="fileInput" type="file" accept=".json,application/json" style="display:none">
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>Session build</h2>
+    <div class="row">
+      <div>
+        <label for="sessionTitle">Title</label>
+        <input id="sessionTitle" type="text">
+      </div>
+      <div>
+        <label for="sessionDuration">Duration</label>
+        <input id="sessionDuration" type="number" min="0">
+      </div>
+      <div>
+        <label for="sessionAudience">Audience</label>
+        <input id="sessionAudience" type="text">
+      </div>
+    </div>
+
+    <label for="sessionSubtitle">Subtitle</label>
+    <input id="sessionSubtitle" type="text">
+
+    <label for="sessionNotes">Session notes</label>
+    <textarea id="sessionNotes"></textarea>
+
+    <h3>Steps</h3>
+    <div class="step-list" id="stepList"></div>
+    <p class="small">Tip: select a step on the left, edit it below, then save the build JSON.</p>
+
+    <h3>Selected step editor</h3>
+    <label for="stepId">Step id</label>
+    <input id="stepId" type="text">
+
+    <div class="row">
+      <div>
+        <label for="stepTitle">Title</label>
+        <input id="stepTitle" type="text">
+      </div>
+      <div>
+        <label for="stepType">Type</label>
+        <select id="stepType">
+          <option>intro</option>
+          <option>demo</option>
+          <option>exercise</option>
+          <option>reflection</option>
+          <option>demo_pause</option>
+          <option>branch</option>
+          <option>pathway_activity</option>
+          <option>independent_project</option>
+          <option>close</option>
+        </select>
+      </div>
+      <div>
+        <label for="stepMinutes">Minutes</label>
+        <input id="stepMinutes" type="number" min="0">
+      </div>
+    </div>
+
+    <label for="stepPathway">Pathway</label>
+    <input id="stepPathway" type="text">
+
+    <label for="stepGoal">Goal</label>
+    <textarea id="stepGoal"></textarea>
+
+    <label for="stepLearnerPrompt">Learner prompt</label>
+    <textarea id="stepLearnerPrompt"></textarea>
+
+    <label for="stepStarterPrompt">Starter prompt / demo prompt</label>
+    <textarea id="stepStarterPrompt"></textarea>
+
+    <label for="stepImprovedPrompt">Improved prompt / stronger prompt</label>
+    <textarea id="stepImprovedPrompt"></textarea>
+
+    <label for="stepReflection">Reflection question</label>
+    <textarea id="stepReflection"></textarea>
+
+    <label for="stepNotes">Facilitator notes</label>
+    <textarea id="stepNotes"></textarea>
+  </section>
+
+  <section>
+    <h2>Outline preview</h2>
+    <div id="summaryMeta" class="small"></div>
+    <div id="preview"></div>
+  </section>
+</main>
+
+<script>
+const seededBuild = {
+  "schema_version": "1.0",
+  "designer_version": "0.2.0",
+  "session": {
+    "title": "Jenn's Ventures AI Night",
+    "subtitle": "Master aligned session model",
+    "duration_minutes": 90,
+    "audience": "Venturers ages 13-18",
+    "facilitator_mode": "browser_first",
+    "notes": "Pre-populated from the live-site alignment pass. Restores the missing concept-first AI and ChatGPT teaching layer, then carries the participant workbook, pathways, image activity, reflection, and safe-use close."
+  },
+  "defaults": {
+    "pathways": [
+      "guided",
+      "build",
+      "remix",
+      "stretch"
+    ],
+    "result_ratings": [
+      "yes mostly",
+      "partly",
+      "not yet"
+    ],
+    "categories": [
+      "planning",
+      "writing",
+      "school",
+      "creative",
+      "useful life task"
+    ]
+  },
+  "steps": [
+    {
+      "id": "arrival_01",
+      "type": "intro",
+      "title": "Arrival, reassurance, and opening question",
+      "minutes": 10,
+      "pathway": "all",
+      "goal": "Reduce pressure, set tone, connect the night to a real learner need.",
+      "learner_prompt": "Write one thing you hope AI could help you do better by the end of tonight.",
+      "reflection_question": "Why did you choose that need?",
+      "facilitator_notes": "Keep this calm. Make it clear that the night is about guided learning, not being perfect."
+    },
+    {
+      "id": "foundations_01",
+      "type": "demo",
+      "title": "Foundations: what AI is, what ChatGPT is, and what it is not",
+      "minutes": 10,
+      "pathway": "all",
+      "goal": "Introduce AI, ChatGPT, usefulness, limits, and why output still needs checking.",
+      "learner_prompt": "Listen for one thing AI can do well and one thing it can get wrong.",
+      "reflection_question": "What surprised you about what AI is or is not?",
+      "facilitator_notes": "Cover AI, ChatGPT, prompt, hallucination, bias, drift, and verification in plain language."
+    },
+    {
+      "id": "demo_01",
+      "type": "demo",
+      "title": "Weak prompt versus stronger prompt",
+      "minutes": 8,
+      "pathway": "all",
+      "goal": "Show that prompt quality changes usefulness.",
+      "starter_prompt": "Plan my weekend.",
+      "improved_prompt": "Plan a low-cost Saturday for a teen in Kitchener-Waterloo with one outdoor idea, one indoor backup, and a timeline from noon to 6 PM.",
+      "reflection_question": "What changed because the prompt became more specific?",
+      "facilitator_notes": "Teach audience, format, and limits here."
+    },
+    {
+      "id": "workbook_start_01",
+      "type": "exercise",
+      "title": "Workbook start and setup",
+      "minutes": 4,
+      "pathway": "all",
+      "goal": "Move learners into the workbook after the concept intro and first demo.",
+      "learner_prompt": "Choose your topic, your level, and what you expect the tool to help you do."
+    },
+    {
+      "id": "exercise_01",
+      "type": "exercise",
+      "title": "Guided text prompt practice",
+      "minutes": 12,
+      "pathway": "all",
+      "goal": "Give every learner one successful prompt-improvement loop early in the session.",
+      "activity_cards": [
+        {
+          "card_id": "plan_01",
+          "category": "planning",
+          "weak_prompt": "Plan something fun for this weekend.",
+          "better_prompt_hint": "Add audience, place, budget, time, and output format."
+        },
+        {
+          "card_id": "study_01",
+          "category": "school",
+          "weak_prompt": "Help me study science.",
+          "better_prompt_hint": "Add topic, age, format, and what would make the answer useful."
+        },
+        {
+          "card_id": "message_01",
+          "category": "writing",
+          "weak_prompt": "Rewrite this message.",
+          "better_prompt_hint": "Add audience, tone, length, and what needs to be clear."
+        }
+      ],
+      "learner_prompt": "Improve one weak prompt. Save the better version. Note what changed in the output.",
+      "reflection_question": "What did you expect the improved prompt to return, and what did it actually return?"
+    },
+    {
+      "id": "break_01",
+      "type": "demo_pause",
+      "title": "Break and regroup",
+      "minutes": 5,
+      "pathway": "all",
+      "goal": "Reset the room and pace.",
+      "facilitator_notes": "Protect the break. Do not let the room run hot for the full 90 minutes."
+    },
+    {
+      "id": "image_demo_01",
+      "type": "demo",
+      "title": "Image prompt demo",
+      "minutes": 8,
+      "pathway": "all",
+      "goal": "Show that image prompts improve with audience, purpose, layout, and style.",
+      "starter_prompt": "Make a camp poster.",
+      "improved_prompt": "Create a friendly poster for a youth AI night at camp. Use a clean layout, bold heading, warm evening colours, and space for date, time, and what to bring.",
+      "reflection_question": "What details helped most in the better image prompt?"
+    },
+    {
+      "id": "image_activity_01",
+      "type": "exercise",
+      "title": "Guided image activity",
+      "minutes": 10,
+      "pathway": "all",
+      "goal": "Give learners one supported image-generation task without overload.",
+      "learner_prompt": "Create one image prompt with purpose, audience, style, and layout clearly stated."
+    },
+    {
+      "id": "advanced_demo_01",
+      "type": "demo_pause",
+      "title": "Advanced or future-path demo",
+      "minutes": 7,
+      "pathway": "all",
+      "goal": "Show what comes after browser-first use without making it the core of the night.",
+      "facilitator_notes": "Keep this short. Position it as optional future direction."
+    },
+    {
+      "id": "branch_01",
+      "type": "branch",
+      "title": "Choose Guided, Build, Remix, or Stretch",
+      "minutes": 2,
+      "pathway": "all",
+      "goal": "Right-size the final work block to different learner confidence levels.",
+      "branch_rules": [
+        {
+          "if_choice": "guided",
+          "next_focus": "sentence frames and strong examples"
+        },
+        {
+          "if_choice": "build",
+          "next_focus": "practical personal task"
+        },
+        {
+          "if_choice": "remix",
+          "next_focus": "change audience, tone, or format"
+        },
+        {
+          "if_choice": "stretch",
+          "next_focus": "compare multiple outputs and name verification needs"
+        }
+      ]
+    },
+    {
+      "id": "project_01",
+      "type": "independent_project",
+      "title": "Personal mini-project",
+      "minutes": 8,
+      "pathway": "branched",
+      "goal": "Use the prompt-improvement pattern on a personally relevant task.",
+      "learner_prompt": "Create one prompt for a real interest: school, creativity, hobbies, planning, or a useful life task. Save the best version and note one improvement you made."
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "title": "Reflection and summary",
+      "minutes": 7,
+      "pathway": "all",
+      "goal": "Capture learning, remaining gaps, and next-step thinking.",
+      "learner_prompt": "What changed? What still needs checking? What would you do differently next time?",
+      "facilitator_notes": "Do not skip the verification habit."
+    },
+    {
+      "id": "close_01",
+      "type": "close",
+      "title": "Safe-use close and takeaway",
+      "minutes": 3,
+      "pathway": "all",
+      "goal": "End with one useful habit and one realistic next step.",
+      "learner_prompt": "Write one prompt habit you want to keep using after tonight."
+    }
+  ]
+};
+const emptyBuild = {
+  schema_version: "1.0",
+  designer_version: "0.1.0",
+  session: {
+    title: "New workbook build",
+    subtitle: "",
+    duration_minutes: 90,
+    audience: "",
+    facilitator_mode: "browser_first",
+    notes: ""
+  },
+  defaults: {
+    pathways: ["guided", "build", "remix", "stretch"],
+    result_ratings: ["yes mostly", "partly", "not yet"],
+    categories: []
+  },
+  steps: []
+};
+
+let model = structuredClone(seededBuild);
+let selectedIndex = 0;
+
+const el = (id) => document.getElementById(id);
+
+function totalMinutes() {
+  return (model.steps || []).reduce((sum, step) => sum + Number(step.minutes || 0), 0);
+}
+
+function renderSession() {
+  el("sessionTitle").value = model.session.title || "";
+  el("sessionSubtitle").value = model.session.subtitle || "";
+  el("sessionDuration").value = model.session.duration_minutes || 0;
+  el("sessionAudience").value = model.session.audience || "";
+  el("sessionNotes").value = model.session.notes || "";
+}
+
+function renderSteps() {
+  const list = el("stepList");
+  list.innerHTML = "";
+  (model.steps || []).forEach((step, index) => {
+    const div = document.createElement("div");
+    div.className = "step-item" + (index === selectedIndex ? " active" : "");
+    div.innerHTML = `<strong>${index + 1}. ${escapeHtml(step.title || "(untitled)")}</strong><br><span class="small">${escapeHtml(step.type || "")} • ${Number(step.minutes || 0)} min • pathway: ${escapeHtml(step.pathway || "all")}</span>`;
+    div.onclick = () => {
+      selectedIndex = index;
+      renderAll();
+    };
+    list.appendChild(div);
+  });
+}
+
+function renderSelectedStep() {
+  const step = model.steps[selectedIndex];
+  const blank = {
+    id: "", title: "", type: "exercise", minutes: 5, pathway: "all",
+    goal: "", learner_prompt: "", starter_prompt: "", improved_prompt: "",
+    reflection_question: "", facilitator_notes: ""
+  };
+  const s = step || blank;
+  el("stepId").value = s.id || "";
+  el("stepTitle").value = s.title || "";
+  el("stepType").value = s.type || "exercise";
+  el("stepMinutes").value = Number(s.minutes || 0);
+  el("stepPathway").value = s.pathway || "";
+  el("stepGoal").value = s.goal || "";
+  el("stepLearnerPrompt").value = s.learner_prompt || "";
+  el("stepStarterPrompt").value = s.starter_prompt || "";
+  el("stepImprovedPrompt").value = s.improved_prompt || "";
+  el("stepReflection").value = s.reflection_question || "";
+  el("stepNotes").value = s.facilitator_notes || "";
+}
+
+function renderPreview() {
+  el("summaryMeta").innerHTML = `
+    <div class="kv">
+      <div>Total designed time</div><div><strong>${totalMinutes()} minutes</strong></div>
+      <div>Session target</div><div>${escapeHtml(String(model.session.duration_minutes || ""))} minutes</div>
+      <div>Audience</div><div>${escapeHtml(model.session.audience || "")}</div>
+      <div>Mode</div><div>${escapeHtml(model.session.facilitator_mode || "")}</div>
+    </div>
+  `;
+  const preview = el("preview");
+  preview.innerHTML = "";
+  (model.steps || []).forEach((step, index) => {
+    const card = document.createElement("div");
+    card.className = "preview-card";
+    card.innerHTML = `
+      <div><span class="badge">${escapeHtml(step.type || "")}</span><span class="badge">${Number(step.minutes || 0)} min</span><span class="badge">${escapeHtml(step.pathway || "all")}</span></div>
+      <h3>${index + 1}. ${escapeHtml(step.title || "(untitled)")}</h3>
+      <div><strong>Goal:</strong> ${escapeHtml(step.goal || "")}</div>
+      <div><strong>Learner prompt:</strong> ${escapeHtml(step.learner_prompt || "")}</div>
+      <div><strong>Reflection:</strong> ${escapeHtml(step.reflection_question || "")}</div>
+      <div><strong>Facilitator notes:</strong> ${escapeHtml(step.facilitator_notes || "")}</div>
+    `;
+    preview.appendChild(card);
+  });
+}
+
+function renderAll() {
+  if (selectedIndex >= model.steps.length) selectedIndex = Math.max(0, model.steps.length - 1);
+  renderSession();
+  renderSteps();
+  renderSelectedStep();
+  renderPreview();
+}
+
+function syncSessionFromInputs() {
+  model.session.title = el("sessionTitle").value;
+  model.session.subtitle = el("sessionSubtitle").value;
+  model.session.duration_minutes = Number(el("sessionDuration").value || 0);
+  model.session.audience = el("sessionAudience").value;
+  model.session.notes = el("sessionNotes").value;
+}
+
+function syncSelectedStepFromInputs() {
+  if (!model.steps[selectedIndex]) return;
+  const s = model.steps[selectedIndex];
+  s.id = el("stepId").value;
+  s.title = el("stepTitle").value;
+  s.type = el("stepType").value;
+  s.minutes = Number(el("stepMinutes").value || 0);
+  s.pathway = el("stepPathway").value;
+  s.goal = el("stepGoal").value;
+  s.learner_prompt = el("stepLearnerPrompt").value;
+  s.starter_prompt = el("stepStarterPrompt").value;
+  s.improved_prompt = el("stepImprovedPrompt").value;
+  s.reflection_question = el("stepReflection").value;
+  s.facilitator_notes = el("stepNotes").value;
+}
+
+function wireInputs() {
+  ["sessionTitle","sessionSubtitle","sessionDuration","sessionAudience","sessionNotes"].forEach(id => {
+    el(id).addEventListener("input", () => {
+      syncSessionFromInputs();
+      renderPreview();
+    });
+  });
+  ["stepId","stepTitle","stepType","stepMinutes","stepPathway","stepGoal","stepLearnerPrompt","stepStarterPrompt","stepImprovedPrompt","stepReflection","stepNotes"].forEach(id => {
+    el(id).addEventListener("input", () => {
+      syncSelectedStepFromInputs();
+      renderSteps();
+      renderPreview();
+    });
+  });
+}
+
+function downloadText(filename, content, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+el("newSeedBtn").onclick = () => {
+  model = structuredClone(seededBuild);
+  selectedIndex = 0;
+  renderAll();
+};
+
+el("newEmptyBtn").onclick = () => {
+  model = structuredClone(emptyBuild);
+  selectedIndex = 0;
+  renderAll();
+};
+
+el("addStepBtn").onclick = () => {
+  model.steps.push({
+    id: "new_step_" + String(model.steps.length + 1).padStart(2, "0"),
+    type: "exercise",
+    title: "New step",
+    minutes: 5,
+    pathway: "all",
+    goal: "",
+    learner_prompt: "",
+    starter_prompt: "",
+    improved_prompt: "",
+    reflection_question: "",
+    facilitator_notes: ""
+  });
+  selectedIndex = model.steps.length - 1;
+  renderAll();
+};
+
+el("deleteStepBtn").onclick = () => {
+  if (!model.steps.length) return;
+  model.steps.splice(selectedIndex, 1);
+  selectedIndex = Math.max(0, selectedIndex - 1);
+  renderAll();
+};
+
+el("saveBtn").onclick = () => {
+  downloadText("workbook_designer_build.json", JSON.stringify(model, null, 2), "application/json");
+};
+
+el("summaryBtn").onclick = () => {
+  const cards = (model.steps || []).map((step, index) => `
+    <div style="border:1px solid #ccc;border-radius:10px;padding:12px;margin-bottom:10px;">
+      <div><strong>${index + 1}. ${escapeHtml(step.title || "")}</strong></div>
+      <div>${escapeHtml(step.type || "")} • ${Number(step.minutes || 0)} min • pathway: ${escapeHtml(step.pathway || "all")}</div>
+      <div><strong>Goal:</strong> ${escapeHtml(step.goal || "")}</div>
+      <div><strong>Learner prompt:</strong> ${escapeHtml(step.learner_prompt || "")}</div>
+      <div><strong>Reflection:</strong> ${escapeHtml(step.reflection_question || "")}</div>
+      <div><strong>Facilitator notes:</strong> ${escapeHtml(step.facilitator_notes || "")}</div>
+    </div>
+  `).join("");
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>Workbook Designer Outline</title></head><body style="font-family:Arial,sans-serif;margin:24px;">
+    <h1>${escapeHtml(model.session.title || "")}</h1>
+    <p>${escapeHtml(model.session.subtitle || "")}</p>
+    <p><strong>Audience:</strong> ${escapeHtml(model.session.audience || "")}<br><strong>Designed minutes:</strong> ${totalMinutes()} / ${escapeHtml(String(model.session.duration_minutes || ""))}</p>
+    <p>${escapeHtml(model.session.notes || "")}</p>
+    ${cards}
+  </body></html>`;
+  downloadText("workbook_designer_outline.html", html, "text/html");
+};
+
+el("openBtn").onclick = () => el("fileInput").click();
+
+el("fileInput").addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  const text = await file.text();
+  const loaded = JSON.parse(text);
+  if (!loaded.steps || !loaded.session) {
+    alert("This JSON does not look like a workbook designer build.");
+    return;
+  }
+  model = loaded;
+  selectedIndex = 0;
+  renderAll();
+});
+
+wireInputs();
+renderAll();
+</script>
+</body>
+</html>

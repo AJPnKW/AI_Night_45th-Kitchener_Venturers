@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "designer_version": "0.1.0",
+  "session": {
+    "title": "Jenn's Ventures AI Night",
+    "subtitle": "Venturer learner workbook flow",
+    "duration_minutes": 90,
+    "audience": "Venturers ages 13-18",
+    "facilitator_mode": "browser_first",
+    "notes": "Pre-populated from the current repo direction: guided start, prompt improvement, reflection, branching, independent build, and close."
+  },
+  "defaults": {
+    "pathways": [
+      "guided",
+      "build",
+      "remix",
+      "stretch"
+    ],
+    "result_ratings": [
+      "yes mostly",
+      "partly",
+      "not yet"
+    ],
+    "categories": [
+      "planning",
+      "writing",
+      "school",
+      "creative",
+      "useful life task"
+    ]
+  },
+  "steps": [
+    {
+      "id": "welcome_01",
+      "type": "intro",
+      "title": "Welcome and what tonight is for",
+      "minutes": 8,
+      "pathway": "all",
+      "goal": "Set expectations, lower pressure, explain that the goal is learning how output changes when prompts change.",
+      "learner_prompt": "Write one thing you hope AI could help you do better by the end of tonight.",
+      "facilitator_notes": "Keep this calm and short. Emphasize that surprising results and weak results are both useful for learning."
+    },
+    {
+      "id": "demo_01",
+      "type": "demo",
+      "title": "Live demo: weak prompt vs stronger prompt",
+      "minutes": 10,
+      "pathway": "all",
+      "goal": "Show that specificity changes usefulness.",
+      "starter_prompt": "Plan something fun for this weekend.",
+      "improved_prompt": "Plan a 2-hour low-cost weekend outing for two teens in Kitchener with one indoor backup. Keep it under $25 and show it as a simple timeline.",
+      "reflection_question": "What changed between the first result and the second result?",
+      "facilitator_notes": "Use this to anchor the whole night. Show how audience, constraints, budget, and output format matter."
+    },
+    {
+      "id": "exercise_01",
+      "type": "exercise",
+      "title": "Guided exercise: fix a weak prompt",
+      "minutes": 12,
+      "pathway": "all",
+      "goal": "Give every learner one successful prompt-improvement loop early in the session.",
+      "activity_cards": [
+        {
+          "card_id": "card_plan_01",
+          "category": "planning",
+          "weak_prompt": "Plan something fun for this weekend.",
+          "better_prompt_hint": "Add audience, budget, place, backup plan, and output format."
+        },
+        {
+          "card_id": "card_email_01",
+          "category": "writing",
+          "weak_prompt": "Rewrite this email.",
+          "better_prompt_hint": "Add audience, tone, length, and what must stay clear."
+        },
+        {
+          "card_id": "card_study_01",
+          "category": "school",
+          "weak_prompt": "Help me study this topic.",
+          "better_prompt_hint": "Add grade level, what confuses you, how much time you have, and what format would help."
+        }
+      ],
+      "learner_prompt": "Pick one card. Improve the prompt. Paste the result. Note what changed.",
+      "reflection_question": "What did you expect the better prompt to return, and what actually happened?"
+    },
+    {
+      "id": "reflect_01",
+      "type": "reflection",
+      "title": "Expectation versus result",
+      "minutes": 8,
+      "pathway": "all",
+      "goal": "Teach that a polished answer is not automatically a correct or complete answer.",
+      "learner_prompt": "Record: what you expected, what the tool returned, what gap remained, and what you would verify next.",
+      "facilitator_notes": "This is the bridge from 'cool output' to real thinking."
+    },
+    {
+      "id": "demo_pause_01",
+      "type": "demo_pause",
+      "title": "Facilitator pause: show one live revision loop",
+      "minutes": 7,
+      "pathway": "all",
+      "goal": "Model how to revise based on the gap, not just randomly add more words.",
+      "facilitator_notes": "Take one learner-safe example and revise it once for clarity and once for output format."
+    },
+    {
+      "id": "branch_01",
+      "type": "branch",
+      "title": "Choose your pathway",
+      "minutes": 5,
+      "pathway": "all",
+      "goal": "Route learners into the right level without overload.",
+      "branch_rules": [
+        {
+          "if_choice": "guided",
+          "next_focus": "narrow prompts with sentence frames"
+        },
+        {
+          "if_choice": "build",
+          "next_focus": "slightly more open practical task"
+        },
+        {
+          "if_choice": "remix",
+          "next_focus": "adapt tone, audience, or format"
+        },
+        {
+          "if_choice": "stretch",
+          "next_focus": "compare outputs, verify claims, or extend complexity"
+        }
+      ],
+      "learner_prompt": "Choose Guided, Build, Remix, or Stretch."
+    },
+    {
+      "id": "pathway_work_01",
+      "type": "pathway_activity",
+      "title": "Pathway work block",
+      "minutes": 20,
+      "pathway": "branched",
+      "goal": "Give a right-sized task based on learner confidence and pace.",
+      "pathway_content": {
+        "guided": {
+          "task": "Use a sentence frame to improve a prompt about planning, writing, or school support.",
+          "sentence_frame": "Help me create a ____ for a ____ audience. Keep it under ____ and show it as ____."
+        },
+        "build": {
+          "task": "Create a practical prompt for something you would really use this month.",
+          "examples": [
+            "trip plan",
+            "study aid",
+            "email draft",
+            "event checklist"
+          ]
+        },
+        "remix": {
+          "task": "Take one good answer and remake it for a different audience, tone, or format."
+        },
+        "stretch": {
+          "task": "Ask the same question two different ways and compare what changed, what improved, and what still needs checking."
+        }
+      }
+    },
+    {
+      "id": "project_01",
+      "type": "independent_project",
+      "title": "Personal mini-project",
+      "minutes": 12,
+      "pathway": "all",
+      "goal": "Let learners apply the pattern to something personally relevant.",
+      "learner_prompt": "Create one prompt for a real interest: school, creativity, hobbies, planning, or useful life task. Save the best version and note one improvement you made."
+    },
+    {
+      "id": "close_01",
+      "type": "close",
+      "title": "Wrap-up and takeaway",
+      "minutes": 8,
+      "pathway": "all",
+      "goal": "Capture learning and useful next steps.",
+      "learner_prompt": "What worked best for you tonight? What would you still verify? What is one prompt habit you want to keep using?",
+      "facilitator_notes": "End with one concrete takeaway, not a lecture."
+    }
+  ]
+}
