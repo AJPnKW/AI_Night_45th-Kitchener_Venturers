@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Participant User Workbook</title>
+<style>
+:root{--bg:#eef3f8;--panel:#fff;--ink:#1f2937;--muted:#5b6b7f;--line:#d6dfeb;--brand:#2563eb;--brand-soft:#eaf1ff;--warn:#fff6e8;--shadow:0 10px 24px rgba(15,23,42,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}.shell{max-width:1200px;margin:0 auto;padding:18px}.hero,.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:20px}.hero{display:grid;grid-template-columns:1.5fr .9fr;gap:18px;background:linear-gradient(135deg,#f8fbff,#eef5ff 60%,#fff)}h1,h2,h3{margin:0 0 10px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.callout{border-left:5px solid var(--brand);background:var(--brand-soft);padding:14px;border-radius:12px}.warn{background:var(--warn)}label{display:block;font-weight:bold;margin:10px 0 6px}input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:12px;font:inherit}.prompt{background:#0f172a;color:#e5eefc;border-radius:14px;padding:14px;font-family:Consolas,monospace;font-size:13px;line-height:1.45;white-space:pre-wrap}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.toolbar button,.toolbar a{padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:12px;text-decoration:none;color:var(--ink);cursor:pointer}.small{font-size:12px;color:var(--muted)}.note{min-height:120px;border:2px dashed #c8d3e1;border-radius:14px;padding:12px}.matrix{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}.matrix th,.matrix td{padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}.matrix th:last-child,.matrix td:last-child{border-right:none}.matrix tr:last-child td{border-bottom:none}.matrix th{background:#f8fbff;text-align:left}@media (max-width:1000px){.hero,.grid-2{grid-template-columns:1fr}}
+</style>
+<script>
+const stateKey='ai_night_user_workbook';
+const promptMap={research:{A:`Give me 5 short bullet points explaining how recycling works in a Canadian city. Use simple language for a teen learner. End with 2 things I should still verify outside ChatGPT.`,B:`Explain ______ in simple language for a ______ learner. Use ______ bullet points. End with ______ things I should still verify.`,C:`Help me research ______. My audience is ______. Keep the answer focused on ______. Show the result as ______. Flag anything uncertain, outdated, assumed, or overconfident.`},useful:{A:`Draft a clear event checklist for a teen planning a one-day camp activity. Use sections, short bullets, and simple wording. Keep it practical and under 200 words.`,B:`Create a ______ for a ______ audience. Keep it under ______. Use the format ______.`,C:`Help me create a useful ______. My audience is ______. My constraints are ______. Use this structure: ______.`},fun_image:{A:`Create a fun illustrated campsite scene at sunset with tents, a campfire, string lights, and a friendly adventurous mood.`,B:`Create an image of ______ in a ______ style with a ______ mood and ______ colours.`,C:`Create an image for ______. Use a ______ style. The mood should feel ______. Include ______. Keep it simple enough to generate quickly.`},learning_image:{A:`Create a simple educational poster-style image showing the water cycle with labels for evaporation, condensation, and precipitation.`,B:`Create a learning image about ______ for a ______ learner. Label ______. Use a ______ style.`,C:`Create a learning-support image about ______. It should help a ______ learner understand ______. Include labels for ______ and keep the layout clear.`},webpage:{A:`Create one simple HTML page for a school club event. Include a title, short welcome text, event details, and a simple contact section. Keep the code short and readable.`,B:`Create one HTML page for ______. Include sections for ______, ______, and ______. Keep the result simple and readable.`,C:`Create one small HTML page for ______. My audience is ______. Include these sections: ______. Keep the code simple enough to review in under 6 minutes.`}};
+function qs(id){return document.getElementById(id)}
+function load(){try{const raw=localStorage.getItem(stateKey);if(!raw)return;const s=JSON.parse(raw);['username','prompt_level','activity_type','round_notes','followup_1','followup_2'].forEach(k=>{if(qs(k)&&s[k]!=null)qs(k).value=s[k]}); if(Array.isArray(s.rounds))window.rounds=s.rounds; else window.rounds=[];}catch(e){window.rounds=[]} render();}
+function save(){const s={username:qs('username').value,prompt_level:qs('prompt_level').value,activity_type:qs('activity_type').value,round_notes:qs('round_notes').value,followup_1:qs('followup_1').value,followup_2:qs('followup_2').value,rounds:window.rounds||[]};localStorage.setItem(stateKey,JSON.stringify(s));renderHeader();}
+function renderHeader(){const name=qs('username').value.trim()||'Participant';qs('hello').textContent=name;qs('export_name').textContent=name;document.title=name+' — Participant User Workbook';}
+function currentPrompt(){return promptMap[qs('activity_type').value][qs('prompt_level').value]}
+function render(){qs('selected_prompt').textContent=currentPrompt();renderHeader();const rows=(window.rounds||[]).map((r,i)=>`<div class="card" style="margin-bottom:10px"><strong>${escapeHtml(r.username||'Participant')} — Round ${i+1}</strong><p class="small">${escapeHtml(r.activity)} • Level ${escapeHtml(r.level)}</p><div class="prompt">${escapeHtml(r.prompt)}</div><p><strong>Main notes:</strong> ${escapeHtml(r.notes)}</p><p><strong>Follow-up 1:</strong> ${escapeHtml(r.f1)}</p><p><strong>Follow-up 2:</strong> ${escapeHtml(r.f2)}</p></div>`).join('');qs('round_log').innerHTML=rows||'<p class="small">No saved rounds yet.</p>';}
+function addRound(){window.rounds=window.rounds||[];window.rounds.push({username:qs('username').value.trim(),activity:qs('activity_type').value,level:qs('prompt_level').value,prompt:currentPrompt(),notes:qs('round_notes').value,f1:qs('followup_1').value,f2:qs('followup_2').value,ts:new Date().toISOString()});save();}
+function exportJson(){const blob=new Blob([localStorage.getItem(stateKey)||'{}'],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(qs('username').value.trim()||'participant')+'_ai_night_journey.json';a.click();}
+function exportHtml(){const name=qs('username').value.trim()||'Participant';const cards=(window.rounds||[]).map((r,i)=>`<div style="border:1px solid #ccc;border-radius:12px;padding:12px;margin-bottom:10px"><h3>${escapeHtml(name)} — Round ${i+1}</h3><p>${escapeHtml(r.activity)} • Level ${escapeHtml(r.level)}</p><pre>${escapeHtml(r.prompt)}</pre><p><strong>Main notes:</strong> ${escapeHtml(r.notes)}</p><p><strong>Follow-up 1:</strong> ${escapeHtml(r.f1)}</p><p><strong>Follow-up 2:</strong> ${escapeHtml(r.f2)}</p></div>`).join('');const html='<!doctype html><html><head><meta charset="utf-8"><title>'+escapeHtml(name)+' AI Night Journey</title></head><body style="font-family:Arial;margin:24px"><h1>'+escapeHtml(name)+' — AI Night Journey</h1>'+cards+'</body></html>';const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(name||'participant')+'_ai_night_journey.html';a.click();}
+function escapeHtml(s){return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
+window.addEventListener('DOMContentLoaded',()=>{['username','prompt_level','activity_type','round_notes','followup_1','followup_2'].forEach(id=>qs(id).addEventListener('input',save));load();});
+</script>
+</head>
+<body>
+<div class="shell">
+  <section class="hero">
+    <div>
+      <h1><span id="hello">Participant</span> — Personal AI Night workbook</h1>
+      <p>This page personalizes the workbook with the participant username, keeps the activity rounds on the device, and exports the participant journey with their name in the file.</p>
+      <div class="callout warn"><strong>Browser-only tonight:</strong> ChatGPT in the browser only. Keep prompts focused so most results return in 2 to 4 minutes. The one-page website task can take about 5 to 6 minutes.</div>
+    </div>
+    <div class="panel">
+      <label for="username">Participant username or initials</label>
+      <input id="username" type="text" placeholder="Enter participant name or initials">
+      <p class="small">This personalizes the page heading and exported files.</p>
+      <div class="toolbar"><a href="./workbook.html">Open shared workbook</a><a href="../facilitator/run-of-show.html">Facilitator run of show</a></div>
+    </div>
+  </section>
+  <div class="grid-2" style="margin-top:18px">
+    <section class="panel">
+      <h2>Learning notes</h2>
+      <table class="matrix">
+        <tr><th>Topic</th><th>Meaning for tonight</th></tr>
+        <tr><td>Drift</td><td>Small wording changes can shift the result more than expected.</td></tr>
+        <tr><td>Hallucination</td><td>ChatGPT can sound confident and still be wrong.</td></tr>
+        <tr><td>Overconfident answer</td><td>The wording may sound more certain than the evidence supports.</td></tr>
+        <tr><td>Outdated information</td><td>Some answers may not reflect the newest facts.</td></tr>
+        <tr><td>Assumptions</td><td>ChatGPT may fill in missing details without telling you clearly.</td></tr>
+      </table>
+      <div class="card" style="margin-top:14px">
+        <h3>ChatGPT support pages</h3>
+        <ul>
+          <li><a href="../kb/chatgpt_rule_set_templates.html">Rule-set templates</a></li>
+          <li><a href="../kb/chatgpt_configuration_templates.html">Configuration templates</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Personal prompt lab</h2>
+      <label for="activity_type">Activity type</label>
+      <select id="activity_type">
+        <option value="research">Research prompt</option>
+        <option value="useful">Create useful work</option>
+        <option value="fun_image">Fun image</option>
+        <option value="learning_image">Learning image</option>
+        <option value="webpage">One-page website</option>
+      </select>
+      <label for="prompt_level">Prompt level</label>
+      <select id="prompt_level">
+        <option value="A">Level A — exact prompt</option>
+        <option value="B">Level B — fill-in prompt</option>
+        <option value="C">Level C — flexible template</option>
+      </select>
+      <div id="selected_prompt" class="prompt" style="margin-top:12px"></div>
+      <label for="round_notes">What did I expect? What did I get? What changed?</label>
+      <textarea id="round_notes" rows="5"></textarea>
+      <label for="followup_1">Follow-up prompt 1</label>
+      <textarea id="followup_1" rows="3"></textarea>
+      <label for="followup_2">Follow-up prompt 2</label>
+      <textarea id="followup_2" rows="3"></textarea>
+      <div class="toolbar"><button type="button" onclick="addRound()">Save round</button><button type="button" onclick="exportJson()">Download JSON</button><button type="button" onclick="exportHtml()">Download HTML</button></div>
+    </section>
+  </div>
+  <section class="panel" style="margin-top:18px">
+    <h2><span id="export_name">Participant</span> — saved journey</h2>
+    <div id="round_log"><p class="small">No saved rounds yet.</p></div>
+  </section>
+</div>
+</body>
+</html>
